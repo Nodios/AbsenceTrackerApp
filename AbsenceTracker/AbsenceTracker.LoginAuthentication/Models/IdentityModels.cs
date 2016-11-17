@@ -21,7 +21,7 @@ namespace AbsenceTracker.LoginAuthentication.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=AbsenceTrackerSbConnString", throwIfV1Schema: false)
         {
         }
 
