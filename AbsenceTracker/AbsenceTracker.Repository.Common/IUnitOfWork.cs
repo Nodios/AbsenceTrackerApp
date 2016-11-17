@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.Repository.Common
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         Task<int> Commit();
         void Dispose();

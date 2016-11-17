@@ -9,16 +9,16 @@ namespace AbsenceTracker.Repository
 {
     public class UnitOfWorkFactory : IUnitOfWorkFactory
     {
-        protected readonly IUnitOfWork UnitOfWOrk;
+        private readonly IUnitOfWork UnitOfWork;
 
         public UnitOfWorkFactory(IUnitOfWork unitOfWork)
         {
-            this.UnitOfWOrk = unitOfWork;
+            this.UnitOfWork = unitOfWork;
         }
 
         public IUnitOfWork CreateUnitOfWork()
         {
-            return this.UnitOfWOrk;
+            return this.UnitOfWork;
         }
     }
 }

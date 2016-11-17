@@ -4,35 +4,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AbsenceTracker.DAL.Common.IDatabaseModels;
 
 namespace AbsenceTracker.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        //protected IContext Context;
+        protected IAbsenceTrackerEntities Context;
 
-        public UnitOfWork()//IContext context
+        public UnitOfWork(IAbsenceTrackerEntities context)
         {
-            //this.Context = context;
+            this.Context = context;
         }
 
         public async Task<int> Commit()
         {
-            try
-            {
-                //return await Context.SaveChangesAsync();
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-            throw new NotImplementedException();
+            return await Context.SaveChangesAsync();
         }
 
         public void Dispose()
         {
-            //Context.Dispose();
-            throw new NotImplementedException();
+            Context.Dispose();
         }
     }
 }

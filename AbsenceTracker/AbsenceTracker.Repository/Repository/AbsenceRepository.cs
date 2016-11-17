@@ -16,5 +16,7 @@ namespace AbsenceTracker.Repository.Repository
         {
             this.GenericRepository = genericRepository;
         }
+
+
     }
 }

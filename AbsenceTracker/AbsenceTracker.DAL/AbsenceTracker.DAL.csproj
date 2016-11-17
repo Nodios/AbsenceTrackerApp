@@ -51,78 +51,82 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseModels\Absence.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\Absence.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AbsenceTracker.Context.cs">
+    <Compile Include="Database\AbsenceTrackerDb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbsenceTracker.Context.tt</DependentUpon>
+      <DependentUpon>AbsenceTrackerDb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AbsenceTracker.cs">
+    <Compile Include="Database\AbsenceTrackerDb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AbsenceTracker.Designer.cs">
+    <Compile Include="Database\AbsenceTrackerDb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AbsenceTracker.edmx</DependentUpon>
+      <DependentUpon>AbsenceTrackerDb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AspNetRoles.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\AspNetRoles.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AspNetUserClaims.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\AspNetUserClaims.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AspNetUserLogins.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\AspNetUserLogins.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\AspNetUsers.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\AspNetUsers.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\Compensation.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\Compensation.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\CompensationEntry.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\CompensationEntry.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\Sickness.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\Sickness.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseModels\Vacation.cs">
-      <DependentUpon>AbsenceTracker.tt</DependentUpon>
+    <Compile Include="Database\Vacation.cs">
+      <DependentUpon>AbsenceTrackerDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EntityDeploy Include="DatabaseModels\AbsenceTracker.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AbsenceTracker.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <ProjectReference Include="..\AbsenceTracker.DAL.Common\AbsenceTracker.DAL.Common.csproj">
+      <Project>{e3e1e467-0bc6-4e89-baac-a6986cc92575}</Project>
+      <Name>AbsenceTracker.DAL.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="DatabaseModels\AbsenceTracker.edmx.diagram">
-      <DependentUpon>AbsenceTracker.edmx</DependentUpon>
+    <EntityDeploy Include="Database\AbsenceTrackerDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AbsenceTrackerDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\AbsenceTrackerDb.edmx.diagram">
+      <DependentUpon>AbsenceTrackerDb.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseModels\AbsenceTracker.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AbsenceTracker.edmx</DependentUpon>
-      <LastGenOutput>AbsenceTracker.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DatabaseModels\AbsenceTracker.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AbsenceTracker.edmx</DependentUpon>
-      <LastGenOutput>AbsenceTracker.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Database\AbsenceTrackerDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AbsenceTrackerDb.edmx</DependentUpon>
+      <LastGenOutput>AbsenceTrackerDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\AbsenceTrackerDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AbsenceTrackerDb.edmx</DependentUpon>
+      <LastGenOutput>AbsenceTrackerDb.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
