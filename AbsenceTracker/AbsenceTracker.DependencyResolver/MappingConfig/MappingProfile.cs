@@ -1,4 +1,7 @@
-﻿using AutoMapper;
+﻿using AbsenceTracker.DAL.Database;
+using AbsenceTracker.Model.Common.IDomainModels;
+using AbsenceTracker.Model.DomainModels;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +15,11 @@ namespace AbsenceTracker.DependencyResolver.MappingConfig
         protected override void Configure()
         {
             //CreateMap<destination, source>().ReverseMap();
+            //CompensationEntry database <-> CompensationEntry domain
+            CreateMap<CompensationEntry, ICompensationEntryDomain>().ReverseMap();
+            CreateMap<CompensationEntryDomain, CompensationEntry>().ReverseMap();
+            CreateMap<ICompensationEntryDomain, CompensationEntry>().ReverseMap();
+
         }
     }
 }

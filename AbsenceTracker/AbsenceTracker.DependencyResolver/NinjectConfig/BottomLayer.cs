@@ -1,4 +1,8 @@
-﻿using Ninject.Modules;
+﻿using AbsenceTracker.DAL.Common.IDatabaseModels;
+using AbsenceTracker.DAL.Database;
+using AbsenceTracker.Model.Common.IDomainModels;
+using AbsenceTracker.Model.DomainModels;
+using Ninject.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +15,8 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
     {
         public override void Load()
         {
-            throw new NotImplementedException();
+            //Binding database context
+            Bind<IAbsenceTrackerEntities>().To<AbsenceTrackerEntities>();
         }
     }
 }

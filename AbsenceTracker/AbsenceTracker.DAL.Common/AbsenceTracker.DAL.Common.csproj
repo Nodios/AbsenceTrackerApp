@@ -49,16 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDatabaseModels\IAbsence.cs" />
     <Compile Include="IDatabaseModels\IAbsenceTrackerEntities.cs" />
-    <Compile Include="IDatabaseModels\IAspNetRoles.cs" />
-    <Compile Include="IDatabaseModels\IAspNetUserClaims.cs" />
-    <Compile Include="IDatabaseModels\IAspNetUserLogins.cs" />
-    <Compile Include="IDatabaseModels\IAspNetUsers.cs" />
-    <Compile Include="IDatabaseModels\ICompensation.cs" />
-    <Compile Include="IDatabaseModels\ICompensationEntry.cs" />
-    <Compile Include="IDatabaseModels\ISickness.cs" />
-    <Compile Include="IDatabaseModels\IVacation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

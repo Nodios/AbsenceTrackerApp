@@ -56,6 +56,10 @@
       <Project>{e3e1e467-0bc6-4e89-baac-a6986cc92575}</Project>
       <Name>AbsenceTracker.DAL.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AbsenceTracker.Model.Common\AbsenceTracker.Model.Common.csproj">
+      <Project>{25E31B7D-CD21-4AEB-8BC6-9209A9050FC1}</Project>
+      <Name>AbsenceTracker.Model.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

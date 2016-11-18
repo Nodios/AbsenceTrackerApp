@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=5.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.5.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -64,6 +68,18 @@
     <ProjectReference Include="..\AbsenceTracker.DAL.Common\AbsenceTracker.DAL.Common.csproj">
       <Project>{e3e1e467-0bc6-4e89-baac-a6986cc92575}</Project>
       <Name>AbsenceTracker.DAL.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbsenceTracker.DAL\AbsenceTracker.DAL.csproj">
+      <Project>{4C899040-38B7-40D5-A173-DEA4ADC6236B}</Project>
+      <Name>AbsenceTracker.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbsenceTracker.Model.Common\AbsenceTracker.Model.Common.csproj">
+      <Project>{25E31B7D-CD21-4AEB-8BC6-9209A9050FC1}</Project>
+      <Name>AbsenceTracker.Model.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AbsenceTracker.Model\AbsenceTracker.Model.csproj">
+      <Project>{FD4A7ACD-2C5A-470B-A067-872E84B2D931}</Project>
+      <Name>AbsenceTracker.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbsenceTracker.Repository.Common\AbsenceTracker.Repository.Common.csproj">
       <Project>{76faba09-f53f-4605-99c3-5b17a2446980}</Project>

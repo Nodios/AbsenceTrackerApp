@@ -40,10 +40,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDomainModels\IAbsenceDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetRolesDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetUserClaimsDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetUsersDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetUserLoginsDomain.cs" />
+    <Compile Include="IDomainModels\ICompensationDomain.cs" />
+    <Compile Include="IDomainModels\ICompensationEntryDomain.cs" />
+    <Compile Include="IDomainModels\ISicknessDomain.cs" />
+    <Compile Include="IDomainModels\IVacationDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="IDomainModels\" />
+    <ProjectReference Include="..\AbsenceTracker.DAL.Common\AbsenceTracker.DAL.Common.csproj">
+      <Project>{E3E1E467-0BC6-4E89-BAAC-A6986CC92575}</Project>
+      <Name>AbsenceTracker.DAL.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

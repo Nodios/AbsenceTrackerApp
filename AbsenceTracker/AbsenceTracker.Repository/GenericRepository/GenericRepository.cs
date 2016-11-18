@@ -22,6 +22,7 @@ namespace AbsenceTracker.Repository.GenericRepository
             this.UnitOfWorkFactory = unitOfWorkFactory;
         }
 
+        //Add
         public async Task<int> Add<T>(T entity) where T : class
         {
             try
@@ -35,8 +36,8 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
-        public async Task<int> Delete<T>(Guid id) where T : class
+        //Delete by id
+        public async Task<int> Delete<T>(string id) where T : class
         {
             try
             {
@@ -49,7 +50,7 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
+        //Delete by object
         public async Task<int> Delete<T>(T entity) where T : class
         {
             try
@@ -62,8 +63,8 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
-        public async Task<T> Get<T>(Guid id) where T : class
+        //Get by Id
+        public async Task<T> Get<T>(string id) where T : class
         {
             try
             {
@@ -75,7 +76,7 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
+        //Get all entities
         public async Task<IEnumerable<T>> GetAll<T>() where T : class
         {
             try
@@ -88,7 +89,7 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
+        //Get first matched
         public async Task<T> GetWhere<T>(Expression<Func<T, bool>> match) where T : class
         {
             try
@@ -101,7 +102,7 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
+        //Get range
         public async Task<IEnumerable<T>> GetRangeAsync<T>(Expression<Func<T, bool>> match) where T : class
         {
             try
@@ -114,7 +115,7 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
+        //Update
         public async Task<int> Update<T>(T entity) where T : class
         {
             try
@@ -127,7 +128,7 @@ namespace AbsenceTracker.Repository.GenericRepository
                 throw e;
             }
         }
-
+        //Get queryable
         public IQueryable<T> GetQueryable<T>() where T : class
         {
             try

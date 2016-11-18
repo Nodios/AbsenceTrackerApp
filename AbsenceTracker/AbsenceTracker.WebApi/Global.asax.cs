@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using AutoMapper;
 
 namespace AbsenceTracker.WebApi
 {
@@ -13,6 +14,13 @@ namespace AbsenceTracker.WebApi
     {
         protected void Application_Start()
         {
+            Mapper.Initialize(cfg =>
+            cfg.AddProfiles(new[] {
+                typeof(AbsenceTracker.DependencyResolver.MappingConfig.MappingProfile),
+                typeof(AbsenceTracker.WebApi.AutoMapperConfig.MappingProfile)
+                })
+            );
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
