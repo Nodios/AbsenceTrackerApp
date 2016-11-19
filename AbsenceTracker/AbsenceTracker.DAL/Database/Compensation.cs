@@ -9,26 +9,24 @@
 
 namespace AbsenceTracker.DAL.Database
 {
-    using Common.IDatabaseModels;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Compensation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Compensation()
         {
-            this.CompensationEntry = new HashSet<CompensationEntry>();
+            this.CompensationEntries = new HashSet<CompensationEntry>();
         }
     
         public string Id { get; set; }
-        public string AbsenceId { get; set; }
         public System.DateTime AbsenceDate { get; set; }
         public int EstimatedTime { get; set; }
         public int TotalSpentTime { get; set; }
     
         public virtual Absence Absence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompensationEntry> CompensationEntry { get; set; }
+        public virtual ICollection<CompensationEntry> CompensationEntries { get; set; }
     }
 }

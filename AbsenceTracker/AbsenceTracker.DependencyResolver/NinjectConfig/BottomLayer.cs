@@ -16,6 +16,7 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
         public override void Load()
         {
             //Binding database context
+            //Bind<IAbsenceTrackerEntities>().To<AbsenceTrackerEntities>();
             Bind<IAbsenceTrackerEntities>().To<AbsenceTrackerEntities>();
         }
     }

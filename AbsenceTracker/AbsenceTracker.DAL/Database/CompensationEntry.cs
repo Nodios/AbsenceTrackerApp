@@ -9,10 +9,9 @@
 
 namespace AbsenceTracker.DAL.Database
 {
-    using Common.IDatabaseModels;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class CompensationEntry
     {
         public string Id { get; set; }

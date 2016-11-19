@@ -71,7 +71,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="AbsenceId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="AbsenceDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EstimatedTime" Type="int" Nullable="false" />
           <Property Name="TotalSpentTime" Type="int" Nullable="false" />
@@ -90,7 +89,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="AbsenceId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Time" Type="int" Nullable="false" />
@@ -100,7 +98,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="AbsenceId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Time" Type="int" Nullable="false" />
@@ -132,13 +129,13 @@
         </Association>
         <Association Name="FK_Compensation_Compensation">
           <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-          <End Role="Compensation" Type="Self.Compensation" Multiplicity="*" />
+          <End Role="Compensation" Type="Self.Compensation" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Absence">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Compensation">
-              <PropertyRef Name="AbsenceId" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -212,25 +209,25 @@
         </Association>
         <Association Name="FK_Sickness_Absence">
           <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-          <End Role="Sickness" Type="Self.Sickness" Multiplicity="*" />
+          <End Role="Sickness" Type="Self.Sickness" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Absence">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Sickness">
-              <PropertyRef Name="AbsenceId" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Vacation_Absence">
           <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-          <End Role="Vacation" Type="Self.Vacation" Multiplicity="*" />
+          <End Role="Vacation" Type="Self.Vacation" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Absence">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Vacation">
-              <PropertyRef Name="AbsenceId" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -306,7 +303,7 @@
           <NavigationProperty Name="Sickness" Relationship="Self.FK_Sickness_Absence" FromRole="Absence" ToRole="Sickness" />
           <NavigationProperty Name="Vacation" Relationship="Self.FK_Vacation_Absence" FromRole="Absence" ToRole="Vacation" />
         </EntityType>
-        <EntityType Name="AspNetRoles">
+        <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -314,7 +311,7 @@
           <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
-        <EntityType Name="AspNetUserClaims">
+        <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -322,9 +319,9 @@
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
-        <EntityType Name="AspNetUserLogins">
+        <EntityType Name="AspNetUserLogin">
           <Key>
             <PropertyRef Name="LoginProvider" />
             <PropertyRef Name="ProviderKey" />
@@ -333,9 +330,9 @@
           <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
-        <EntityType Name="AspNetUsers">
+        <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -351,8 +348,8 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Absence" Relationship="Self.FK_Absence_AspNetUsers" FromRole="AspNetUsers" ToRole="Absence" />
-          <NavigationProperty Name="Absence1" Relationship="Self.FK_Absence_AspNetUsersAssignee" FromRole="AspNetUsers" ToRole="Absence" />
+          <NavigationProperty Name="Absences" Relationship="Self.FK_Absence_AspNetUsers" FromRole="AspNetUsers" ToRole="Absence" />
+          <NavigationProperty Name="Absences1" Relationship="Self.FK_Absence_AspNetUsersAssignee" FromRole="AspNetUsers" ToRole="Absence" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
@@ -362,12 +359,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AbsenceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AbsenceDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EstimatedTime" Type="Int32" Nullable="false" />
           <Property Name="TotalSpentTime" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Absence" Relationship="Self.FK_Compensation_Compensation" FromRole="Compensation" ToRole="Absence" />
-          <NavigationProperty Name="CompensationEntry" Relationship="Self.FK_CompensationEntry_Compensation" FromRole="Compensation" ToRole="CompensationEntry" />
+          <NavigationProperty Name="CompensationEntries" Relationship="Self.FK_CompensationEntry_Compensation" FromRole="Compensation" ToRole="CompensationEntry" />
         </EntityType>
         <EntityType Name="CompensationEntry">
           <Key>
@@ -384,7 +380,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AbsenceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Time" Type="Int32" Nullable="false" />
@@ -395,7 +390,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AbsenceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Time" Type="Int32" Nullable="false" />
@@ -403,7 +397,7 @@
           <NavigationProperty Name="Absence" Relationship="Self.FK_Vacation_Absence" FromRole="Vacation" ToRole="Absence" />
         </EntityType>
         <Association Name="FK_Absence_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -415,7 +409,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Absence_AspNetUsersAssignee">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="Absence" Type="Self.Absence" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
@@ -428,45 +422,45 @@
         </Association>
         <Association Name="FK_Compensation_Compensation">
           <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-          <End Role="Compensation" Type="Self.Compensation" Multiplicity="*" />
+          <End Role="Compensation" Type="Self.Compensation" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Absence">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Compensation">
-              <PropertyRef Name="AbsenceId" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sickness_Absence">
           <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-          <End Role="Sickness" Type="Self.Sickness" Multiplicity="*" />
+          <End Role="Sickness" Type="Self.Sickness" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Absence">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Sickness">
-              <PropertyRef Name="AbsenceId" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Vacation_Absence">
           <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-          <End Role="Vacation" Type="Self.Vacation" Multiplicity="*" />
+          <End Role="Vacation" Type="Self.Vacation" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Absence">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Vacation">
-              <PropertyRef Name="AbsenceId" />
+              <PropertyRef Name="Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -477,10 +471,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -503,38 +497,38 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="AbsenceTrackerEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Absence" EntityType="Self.Absence" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="Compensation" EntityType="Self.Compensation" />
-          <EntitySet Name="CompensationEntry" EntityType="Self.CompensationEntry" />
-          <EntitySet Name="Sickness" EntityType="Self.Sickness" />
-          <EntitySet Name="Vacation" EntityType="Self.Vacation" />
+        <EntityContainer Name="AbsenceTrackerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Absences" EntityType="Self.Absence" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Compensations" EntityType="Self.Compensation" />
+          <EntitySet Name="CompensationEntries" EntityType="Self.CompensationEntry" />
+          <EntitySet Name="Sicknesses" EntityType="Self.Sickness" />
+          <EntitySet Name="Vacations" EntityType="Self.Vacation" />
           <AssociationSet Name="FK_Absence_AspNetUsers" Association="Self.FK_Absence_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Absence" EntitySet="Absence" />
+            <End Role="Absence" EntitySet="Absences" />
           </AssociationSet>
           <AssociationSet Name="FK_Absence_AspNetUsersAssignee" Association="Self.FK_Absence_AspNetUsersAssignee">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Absence" EntitySet="Absence" />
+            <End Role="Absence" EntitySet="Absences" />
           </AssociationSet>
           <AssociationSet Name="FK_Compensation_Compensation" Association="Self.FK_Compensation_Compensation">
-            <End Role="Absence" EntitySet="Absence" />
-            <End Role="Compensation" EntitySet="Compensation" />
+            <End Role="Absence" EntitySet="Absences" />
+            <End Role="Compensation" EntitySet="Compensations" />
           </AssociationSet>
           <AssociationSet Name="FK_Sickness_Absence" Association="Self.FK_Sickness_Absence">
-            <End Role="Absence" EntitySet="Absence" />
-            <End Role="Sickness" EntitySet="Sickness" />
+            <End Role="Absence" EntitySet="Absences" />
+            <End Role="Sickness" EntitySet="Sicknesses" />
           </AssociationSet>
           <AssociationSet Name="FK_Vacation_Absence" Association="Self.FK_Vacation_Absence">
-            <End Role="Absence" EntitySet="Absence" />
-            <End Role="Vacation" EntitySet="Vacation" />
+            <End Role="Absence" EntitySet="Absences" />
+            <End Role="Vacation" EntitySet="Vacations" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -545,8 +539,8 @@
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
           </AssociationSet>
           <AssociationSet Name="FK_CompensationEntry_Compensation" Association="Self.FK_CompensationEntry_Compensation">
-            <End Role="Compensation" EntitySet="Compensation" />
-            <End Role="CompensationEntry" EntitySet="CompensationEntry" />
+            <End Role="Compensation" EntitySet="Compensations" />
+            <End Role="CompensationEntry" EntitySet="CompensationEntries" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -558,8 +552,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AbsenceTrackerModelStoreContainer" CdmEntityContainer="AbsenceTrackerEntities1">
-          <EntitySetMapping Name="Absence">
+        <EntityContainerMapping StorageEntityContainer="AbsenceTrackerModelStoreContainer" CdmEntityContainer="AbsenceTrackerEntities">
+          <EntitySetMapping Name="Absences">
             <EntityTypeMapping TypeName="AbsenceTrackerModel.Absence">
               <MappingFragment StoreEntitySet="Absence">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -571,7 +565,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetRoles">
+            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -579,7 +573,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetUserClaims">
+            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -589,7 +583,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetUserLogins">
+            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -598,7 +592,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetUsers">
+            <EntityTypeMapping TypeName="AbsenceTrackerModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -615,18 +609,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Compensation">
+          <EntitySetMapping Name="Compensations">
             <EntityTypeMapping TypeName="AbsenceTrackerModel.Compensation">
               <MappingFragment StoreEntitySet="Compensation">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AbsenceId" ColumnName="AbsenceId" />
                 <ScalarProperty Name="AbsenceDate" ColumnName="AbsenceDate" />
                 <ScalarProperty Name="EstimatedTime" ColumnName="EstimatedTime" />
                 <ScalarProperty Name="TotalSpentTime" ColumnName="TotalSpentTime" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CompensationEntry">
+          <EntitySetMapping Name="CompensationEntries">
             <EntityTypeMapping TypeName="AbsenceTrackerModel.CompensationEntry">
               <MappingFragment StoreEntitySet="CompensationEntry">
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -636,22 +629,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sickness">
+          <EntitySetMapping Name="Sicknesses">
             <EntityTypeMapping TypeName="AbsenceTrackerModel.Sickness">
               <MappingFragment StoreEntitySet="Sickness">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AbsenceId" ColumnName="AbsenceId" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Vacation">
+          <EntitySetMapping Name="Vacations">
             <EntityTypeMapping TypeName="AbsenceTrackerModel.Vacation">
               <MappingFragment StoreEntitySet="Vacation">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AbsenceId" ColumnName="AbsenceId" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
@@ -681,7 +672,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

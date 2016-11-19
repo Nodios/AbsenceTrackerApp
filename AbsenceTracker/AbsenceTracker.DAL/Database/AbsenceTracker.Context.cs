@@ -26,15 +26,15 @@ namespace AbsenceTracker.DAL.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Absence> Absence { get; set; }
-        public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<Compensation> Compensation { get; set; }
-        public virtual DbSet<CompensationEntry> CompensationEntry { get; set; }
-        public virtual DbSet<Sickness> Sickness { get; set; }
-        public virtual DbSet<Vacation> Vacation { get; set; }
+        public virtual DbSet<Absence> Absences { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Compensation> Compensations { get; set; }
+        public virtual DbSet<CompensationEntry> CompensationEntries { get; set; }
+        public virtual DbSet<Sickness> Sicknesses { get; set; }
+        public virtual DbSet<Vacation> Vacations { get; set; }
 
         public string ConnectionString
         {

@@ -321,10 +321,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AbsenceTracker.DAL\AbsenceTracker.DAL.csproj">
-      <Project>{4c899040-38b7-40d5-a173-dea4adc6236b}</Project>
-      <Name>AbsenceTracker.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AbsenceTracker.DependencyResolver\AbsenceTracker.DependencyResolver.csproj">
       <Project>{aee2ef0b-e663-44ac-b83c-dbb148700cad}</Project>
       <Name>AbsenceTracker.DependencyResolver</Name>

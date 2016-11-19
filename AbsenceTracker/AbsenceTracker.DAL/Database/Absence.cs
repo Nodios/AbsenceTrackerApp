@@ -9,33 +9,21 @@
 
 namespace AbsenceTracker.DAL.Database
 {
-    using Common.IDatabaseModels;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Absence
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Absence()
-        {
-            this.Compensation = new HashSet<Compensation>();
-            this.Sickness = new HashSet<Sickness>();
-            this.Vacation = new HashSet<Vacation>();
-        }
-    
         public string Id { get; set; }
         public string UserId { get; set; }
         public string AssigneeId { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
     
-        public virtual AspNetUsers AspNetUser { get; set; }
-        public virtual AspNetUsers AspNetUserAssignee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Compensation> Compensation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sickness> Sickness { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vacation> Vacation { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUserAssignee { get; set; }
+        public virtual Compensation Compensation { get; set; }
+        public virtual Sickness Sickness { get; set; }
+        public virtual Vacation Vacation { get; set; }
     }
 }

@@ -84,7 +84,7 @@
       <Name>AbsenceTracker.DAL.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbsenceTracker.DAL\AbsenceTracker.DAL.csproj">
-      <Project>{4C899040-38B7-40D5-A173-DEA4ADC6236B}</Project>
+      <Project>{032E8935-EB91-48CB-963A-311569A7FE58}</Project>
       <Name>AbsenceTracker.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\AbsenceTracker.Model.Common\AbsenceTracker.Model.Common.csproj">
