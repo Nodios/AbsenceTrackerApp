@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using AbsenceTracker.WebApi.ViewModels;
+using System.Threading.Tasks;
+using AbsenceTracker.Model.DomainModels;
 
 namespace AbsenceTracker.WebApi.Controllers
 {
@@ -32,7 +34,7 @@ namespace AbsenceTracker.WebApi.Controllers
             }
             catch (Exception e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
@@ -42,37 +44,38 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
-                var response = AutoMapper.Mapper.Map<CompensationEntryView>(await CompensationEntryService.Read(id));
+                var response = Mapper.Map<AspNetUserView>(await AspNetUserService.Read(id));
 
                 if (response == null)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Bad id.");
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid input.");
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
         [HttpPost]
         [Route("add")]
-        public async Task<HttpResponseMessage> Add(CompensationEntryView compensationEntryView)
+        public async Task<HttpResponseMessage> Add(AspNetUserView aspNetUserView)
         {
             try
             {
-                if (compensationEntryView.Date == null || compensationEntryView.SpentTime == 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Krivi unos.");
+                if (aspNetUserView.Email == null || aspNetUserView.EmailConfirmed == false || aspNetUserView.UserName == null 
+                    || aspNetUserView.PasswordHash == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid input.");
 
-                compensationEntryView.Id = Guid.NewGuid().ToString();
+                aspNetUserView.Id = Guid.NewGuid().ToString();
 
-                var response = await CompensationEntryService.Add(Mapper.Map<CompensationEntryDomain>(compensationEntryView));
+                var response = await AspNetUserService.Add(Mapper.Map<AspNetUserDomain>(aspNetUserView));
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
 
         }
@@ -83,42 +86,68 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
-                var response = await CompensationEntryService.Delete(id);
+                var aspNetUser = Mapper.Map<AspNetUserView>(await AspNetUserService.Read(id));
+
+                if (aspNetUser.Absence.Count != 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                        "Cannot delete user. It has bound Absence.");
+                else if(aspNetUser.Absence1.Count != 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                         "Cannot delete user. It has bound Absence.");
+                else if(aspNetUser.AspNetRoles.Count != 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                         "Cannot delete user. It has bound user roles.");
+                else if(aspNetUser.AspNetUserClaims.Count != 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                        "Cannot delete user. It has bound user claims.");
+                else if(aspNetUser.AspNetUserLogins.Count != 0)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                       "Cannot delete user. It has bound user login.");
+
+
+                if (aspNetUser == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Bad id.");
+
+                var response = await AspNetUserService.Delete(id);
 
                 if (response == 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't delete entry.");
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Couldn't delete maker.");
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
 
         [HttpPut]
         [Route("update")]
-        public async Task<HttpResponseMessage> Update(CompensationEntryView compensationEntryView)
+        public async Task<HttpResponseMessage> Update(AspNetUserView aspNetUserView)
         {
             try
             {
-                var toBeUpdated = await CompensationEntryService.Read(compensationEntryView.Id);
+                var toBeUpdated = await AspNetUserService.Read(aspNetUserView.Id);
 
                 if (toBeUpdated == null)
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Entry not found");
 
-                if (compensationEntryView.Date != null)
-                    toBeUpdated.Date = compensationEntryView.Date;
-                if (compensationEntryView.SpentTime != 0)
-                    toBeUpdated.SpentTime = compensationEntryView.SpentTime;
+                if (aspNetUserView.Email != null)
+                    toBeUpdated.Email = aspNetUserView.Email;
+                if (aspNetUserView.EmailConfirmed != false)
+                    toBeUpdated.EmailConfirmed = aspNetUserView.EmailConfirmed;
+                if (aspNetUserView.UserName != null)
+                    toBeUpdated.UserName = aspNetUserView.UserName;
+                if (aspNetUserView.PasswordHash != null)
+                    toBeUpdated.PasswordHash = aspNetUserView.PasswordHash;
 
-                var response = await CompensationEntryService.Update(Mapper.Map<CompensationEntryDomain>(toBeUpdated));
+                var response = await AspNetUserService.Update(Mapper.Map<AspNetUserDomain>(toBeUpdated));
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
             catch (Exception e)
             {
-                throw e;
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
     }
