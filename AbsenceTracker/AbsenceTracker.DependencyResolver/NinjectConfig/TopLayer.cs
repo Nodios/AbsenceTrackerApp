@@ -13,7 +13,6 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
     {
         public override void Load()
         {
-            Bind<IUserService>().To<UserService>();
             Bind<IAbsenceService>().To<AbsenceService>();
             Bind<IVacationService>().To<VacationService>();
             Bind<ISicknessService>().To<SicknessService>();
@@ -21,6 +20,9 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
             Bind<ICompensationEntryService>().To<CompensationEntryService>();
 
             Bind<IAspNetUserLoginService>().To<AspNetUserLoginService>();
+            Bind<IAspNetUserClaimService>().To<AspNetUserClaimService>();
+            Bind<IAspNetUserRoleService>().To<AspNetUserRoleService>();
+            Bind<IAspNetUserService>().To<AspNetUserService>();
         }
     }
 }

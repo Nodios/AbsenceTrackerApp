@@ -29,7 +29,7 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
             Bind<ICompensationEntryRepository>().To<CompensationEntryRepository>();
 
             Bind<IAspNetUserRepository>().To<AspNetUserRepository>();
-            Bind<IAspNetRoleRepository>().To<AspNetRoleRepository>();
+            Bind<IAspNetUserRoleRepository>().To<AspNetUserRoleRepository>();
             Bind<IAspNetUserClaimRepository>().To<AspNetUserClaimRepository>();
             Bind<IAspNetUserLoginRepository>().To<AspNetUserLoginRepository>();
 

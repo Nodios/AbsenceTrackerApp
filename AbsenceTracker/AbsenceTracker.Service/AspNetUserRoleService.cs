@@ -1,5 +1,4 @@
 ﻿using AbsenceTracker.Model.Common.IDomainModels;
-using AbsenceTracker.Model.DomainModels;
 using AbsenceTracker.Repository.Common.IRepository;
 using AbsenceTracker.Service.Common;
 using System;
