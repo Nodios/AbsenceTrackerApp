@@ -11,7 +11,7 @@ using AutoMapper;
 
 namespace AbsenceTracker.Repository.Repository
 {
-    public class AspNetRoleRepository : IAspNetRoleRepository
+    public class AspNetRoleRepository : IAspNetUserRoleRepository
     {
         private readonly IGenericRepository GenericRepository;
 
@@ -20,7 +20,7 @@ namespace AbsenceTracker.Repository.Repository
             this.GenericRepository = genericRepository;
         }
         //Add AspNetRole
-        public async Task<int> Add(IAspNetRoleDomain entity)
+        public async Task<int> Add(IAspNetUserRoleDomain entity)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Delete AspNetRole by Object
-        public async Task<int> Delete(IAspNetRoleDomain entity)
+        public async Task<int> Delete(IAspNetUserRoleDomain entity)
         {
             try
             {
@@ -61,11 +61,11 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Get AspNetRole by Id
-        public async Task<IAspNetRoleDomain> Get(string id)
+        public async Task<IAspNetUserRoleDomain> Get(string id)
         {
             try
             {
-                var response = Mapper.Map<IAspNetRoleDomain>(await GenericRepository.Get<AspNetRole>(id));
+                var response = Mapper.Map<IAspNetUserRoleDomain>(await GenericRepository.Get<AspNetRole>(id));
                 return response;
             }
             catch (Exception ex)
@@ -74,11 +74,11 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Get all AspNetRole
-        public async Task<IEnumerable<IAspNetRoleDomain>> GetAll()
+        public async Task<IEnumerable<IAspNetUserRoleDomain>> GetAll()
         {
             try
             {
-                var getData = Mapper.Map<IEnumerable<IAspNetRoleDomain>>(await GenericRepository.GetAll<AspNetRole>());
+                var getData = Mapper.Map<IEnumerable<IAspNetUserRoleDomain>>(await GenericRepository.GetAll<AspNetRole>());
                 return getData;
             }
             catch (Exception ex)
@@ -87,7 +87,7 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Update AspNetRole
-        public async Task<int> Update(IAspNetRoleDomain entity)
+        public async Task<int> Update(IAspNetUserRoleDomain entity)
         {
             try
             {

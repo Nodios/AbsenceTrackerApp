@@ -33,8 +33,8 @@ namespace AbsenceTracker.DependencyResolver.MappingConfig
             CreateMap<AspNetUser, IAspNetUserDomain>().PreserveReferences().ReverseMap().PreserveReferences();
             CreateMap<AspNetUser, AspNetUserDomain>().PreserveReferences().ReverseMap().PreserveReferences();
 
-            CreateMap<AspNetRole, IAspNetRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
-            CreateMap<AspNetRole, AspNetRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
+            CreateMap<AspNetRole, IAspNetUserRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
+            CreateMap<AspNetRole, AspNetUserRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
 
             CreateMap<AspNetUserClaim, IAspNetUserClaimDomain>().PreserveReferences().ReverseMap().PreserveReferences();
             CreateMap<AspNetUserClaim, AspNetUserClaimDomain>().PreserveReferences().ReverseMap().PreserveReferences();

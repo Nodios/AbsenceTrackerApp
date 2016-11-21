@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.Model.DomainModels
 {
-    public class AspNetRoleDomain : IAspNetRoleDomain
+    public class AspNetUserRoleDomain : IAspNetUserRoleDomain
     {
         public string Id { get; set; }
         public string Name { get; set; }

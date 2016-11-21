@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="IGenericRepository\IGenericRepository.cs" />
     <Compile Include="IRepository\IAbsenceRepository.cs" />
-    <Compile Include="IRepository\IAspNetRoleRepository.cs" />
+    <Compile Include="IRepository\IAspNetUserRoleRepository.cs" />
     <Compile Include="IRepository\IAspNetUserClaimRepository.cs" />
     <Compile Include="IRepository\IAspNetUserLoginRepository.cs" />
     <Compile Include="IRepository\IAspNetUserRepository.cs" />

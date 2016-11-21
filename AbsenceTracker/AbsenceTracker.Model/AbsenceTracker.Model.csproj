@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainModels\AbsenceDomain.cs" />
-    <Compile Include="DomainModels\AspNetRoleDomain.cs" />
+    <Compile Include="DomainModels\AspNetUserRoleDomain.cs" />
     <Compile Include="DomainModels\AspNetUserClaimDomain.cs" />
     <Compile Include="DomainModels\AspNetUserLoginDomain.cs" />
     <Compile Include="DomainModels\AspNetUserDomain.cs" />

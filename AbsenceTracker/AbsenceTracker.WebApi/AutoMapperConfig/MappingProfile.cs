@@ -33,8 +33,8 @@ namespace AbsenceTracker.WebApi.AutoMapperConfig
             CreateMap<AspNetUserView, IAspNetUserDomain>().PreserveReferences().ReverseMap().PreserveReferences();
             CreateMap<AspNetUserView, AspNetUserDomain>().PreserveReferences().ReverseMap().PreserveReferences();
 
-            CreateMap<AspNetRoleView, IAspNetRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
-            CreateMap<AspNetRoleView, AspNetRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
+            CreateMap<AspNetRoleView, IAspNetUserRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
+            CreateMap<AspNetRoleView, AspNetUserRoleDomain>().PreserveReferences().ReverseMap().PreserveReferences();
 
             CreateMap<AspNetUserClaimView, IAspNetUserClaimDomain>().PreserveReferences().ReverseMap().PreserveReferences();
             CreateMap<AspNetUserClaimView, AspNetUserClaimDomain>().PreserveReferences().ReverseMap().PreserveReferences();
