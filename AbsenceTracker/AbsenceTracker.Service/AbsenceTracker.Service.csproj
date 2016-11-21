@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbsenceService.cs" />
+    <Compile Include="AspNetUserLoginService.cs" />
     <Compile Include="CompensationEntryService.cs" />
     <Compile Include="CompensationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

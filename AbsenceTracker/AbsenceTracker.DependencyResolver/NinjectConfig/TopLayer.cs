@@ -19,6 +19,8 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
             Bind<ISicknessService>().To<SicknessService>();
             Bind<ICompensationService>().To<CompensationService>();
             Bind<ICompensationEntryService>().To<CompensationEntryService>();
+
+            Bind<IAspNetUserLoginService>().To<AspNetUserLoginService>();
         }
     }
 }
