@@ -42,10 +42,13 @@
   <ItemGroup>
     <Compile Include="IGenericRepository\IGenericRepository.cs" />
     <Compile Include="IRepository\IAbsenceRepository.cs" />
+    <Compile Include="IRepository\IAspNetRoleRepository.cs" />
+    <Compile Include="IRepository\IAspNetUserClaimRepository.cs" />
+    <Compile Include="IRepository\IAspNetUserLoginRepository.cs" />
+    <Compile Include="IRepository\IAspNetUserRepository.cs" />
     <Compile Include="IRepository\ICompensationEntryRepository.cs" />
     <Compile Include="IRepository\ICompensationRepository.cs" />
     <Compile Include="IRepository\ISicknessRepository.cs" />
-    <Compile Include="IRepository\IUserRepository.cs" />
     <Compile Include="IRepository\IVacationRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUnitOfWorkFactory.cs" />
