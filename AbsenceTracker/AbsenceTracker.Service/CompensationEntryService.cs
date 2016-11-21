@@ -66,12 +66,13 @@ namespace AbsenceTracker.Service
                 throw e;
             }
         }
-        //Get All CompensationEntry 
+        //Get All CompensationEntry
         public async Task<IEnumerable<ICompensationEntryDomain>> ReadAll()
         {
             try
             {
                 var response = await CompensationEntryRepository.GetAll();
+
                 return response;
             }
             catch (Exception ex)

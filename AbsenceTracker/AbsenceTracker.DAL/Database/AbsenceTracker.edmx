@@ -349,7 +349,7 @@
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Absences" Relationship="Self.FK_Absence_AspNetUsers" FromRole="AspNetUsers" ToRole="Absence" />
-          <NavigationProperty Name="Absences1" Relationship="Self.FK_Absence_AspNetUsersAssignee" FromRole="AspNetUsers" ToRole="Absence" />
+          <NavigationProperty Name="AbsencesAssignee" Relationship="Self.FK_Absence_AspNetUsersAssignee" FromRole="AspNetUsers" ToRole="Absence" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />

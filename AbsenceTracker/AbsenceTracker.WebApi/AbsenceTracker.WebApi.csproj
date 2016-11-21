@@ -226,6 +226,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AutoMapperConfig\MapperInit.cs" />
     <Compile Include="AutoMapperConfig\MappingProfile.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompensationEntryController.cs" />
@@ -239,10 +240,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AbsenceView.cs" />
-    <Compile Include="ViewModels\AspNetRolesView.cs" />
-    <Compile Include="ViewModels\AspNetUserClaimsView.cs" />
-    <Compile Include="ViewModels\AspNetUserLoginsView.cs" />
-    <Compile Include="ViewModels\AspNetUsersView.cs" />
+    <Compile Include="ViewModels\AspNetRoleView.cs" />
+    <Compile Include="ViewModels\AspNetUserClaimView.cs" />
+    <Compile Include="ViewModels\AspNetUserLoginView.cs" />
+    <Compile Include="ViewModels\AspNetUserView.cs" />
     <Compile Include="ViewModels\CompensationEntryView.cs" />
     <Compile Include="ViewModels\CompensationView.cs" />
     <Compile Include="ViewModels\SicknessView.cs" />

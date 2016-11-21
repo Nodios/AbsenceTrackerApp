@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.Model.Common.IDomainModels
 {
-    public interface IAspNetRolesDomain
+    public interface IAspNetRoleDomain
     {
         string Id { get; set; }
         string Name { get; set; }
-        ICollection<IAspNetUsersDomain> AspNetUsers { get; set; }
+        ICollection<IAspNetUserDomain> AspNetUsers { get; set; }
     }
 }

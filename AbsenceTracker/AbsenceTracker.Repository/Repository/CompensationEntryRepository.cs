@@ -77,11 +77,9 @@ namespace AbsenceTracker.Repository.Repository
         //Get all CompensationEntries
         public async Task<IEnumerable<ICompensationEntryDomain>> GetAll()
         {
-            //Error stack overflow
             try
             {
-                //get data
-                var getData = AutoMapper.Mapper.Map<IEnumerable<ICompensationEntryDomain>>(await GenericRepository.GetAll<CompensationEntry>());
+                var getData = Mapper.Map<IEnumerable<ICompensationEntryDomain>>(await GenericRepository.GetAll<CompensationEntry>());
                 return getData;
             }
             catch (Exception ex)

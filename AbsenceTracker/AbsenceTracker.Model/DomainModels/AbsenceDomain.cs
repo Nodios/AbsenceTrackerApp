@@ -14,11 +14,11 @@ namespace AbsenceTracker.Model.DomainModels
         public string AssigneeId { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
-
-        public virtual IAspNetUsersDomain AspNetUser { get; set; }
-        public virtual IAspNetUsersDomain AspNetUserAssignee { get; set; }
-        public virtual ICollection<ICompensationDomain> Compensation { get; set; }
-        public virtual ICollection<ISicknessDomain> Sickness { get; set; }
-        public virtual ICollection<IVacationDomain> Vacation { get; set; }
+    
+        public virtual IAspNetUserDomain AspNetUser { get; set; }
+        public virtual IAspNetUserDomain AspNetUserAssignee { get; set; }
+        public virtual ICompensationDomain Compensation { get; set; }
+        public virtual ISicknessDomain Sickness { get; set; }
+        public virtual IVacationDomain Vacation { get; set; }
     }
 }

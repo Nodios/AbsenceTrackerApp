@@ -35,7 +35,6 @@ namespace AbsenceTracker.DAL.Database
         public virtual DbSet<CompensationEntry> CompensationEntries { get; set; }
         public virtual DbSet<Sickness> Sicknesses { get; set; }
         public virtual DbSet<Vacation> Vacations { get; set; }
-
         public string ConnectionString
         {
             get
@@ -81,5 +80,6 @@ namespace AbsenceTracker.DAL.Database
                 this.Configuration.AutoDetectChangesEnabled = value;
             }
         }
+
     }
 }

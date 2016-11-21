@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.Model.Common.IDomainModels
 {
-    public interface IAspNetUsersDomain
+    public interface IAspNetUserDomain
     {
         string Id { get; set; }
         string Email { get; set; }
@@ -21,10 +21,10 @@ namespace AbsenceTracker.Model.Common.IDomainModels
         int AccessFailedCount { get; set; }
         string UserName { get; set; }
 
-        ICollection<IAbsenceDomain> Absence { get; set; }
-        ICollection<IAbsenceDomain> Absence1 { get; set; }
-        ICollection<IAspNetUserClaimsDomain> AspNetUserClaims { get; set; }
-        ICollection<IAspNetUserLoginsDomain> AspNetUserLogins { get; set; }
-        ICollection<IAspNetRolesDomain> AspNetRoles { get; set; }
+        ICollection<IAbsenceDomain> Absences { get; set; }
+        ICollection<IAbsenceDomain> AbsencesAssignee { get; set; }
+        ICollection<IAspNetUserClaimDomain> AspNetUserClaims { get; set; }
+        ICollection<IAspNetUserLoginDomain> AspNetUserLogins { get; set; }
+        ICollection<IAspNetRoleDomain> AspNetRoles { get; set; }
     }
 }

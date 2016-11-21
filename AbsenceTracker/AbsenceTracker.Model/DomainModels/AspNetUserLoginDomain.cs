@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.Model.DomainModels
 {
-    public class AspNetUserLoginsDomain : IAspNetUserLoginsDomain
+    public class AspNetUserLoginDomain : IAspNetUserLoginDomain
     {
         public string LoginProvider { get; set; }
         public string ProviderKey { get; set; }
         public string UserId { get; set; }
 
-        public virtual IAspNetUsersDomain AspNetUsers { get; set; }
+        public virtual IAspNetUserDomain AspNetUser { get; set; }
     }
 }

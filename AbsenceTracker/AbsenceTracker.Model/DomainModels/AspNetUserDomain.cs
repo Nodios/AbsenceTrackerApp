@@ -1,11 +1,13 @@
-﻿using System;
+﻿using AbsenceTracker.Model.Common.IDomainModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AbsenceTracker.WebApi.ViewModels
+namespace AbsenceTracker.Model.DomainModels
 {
-    public class AspNetUsersView
+    public class AspNetUserDomain : IAspNetUserDomain
     {
         public string Id { get; set; }
         public string Email { get; set; }
@@ -20,10 +22,10 @@ namespace AbsenceTracker.WebApi.ViewModels
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
 
-        public virtual ICollection<AbsenceView> Absence { get; set; }
-        public virtual ICollection<AbsenceView> Absence1 { get; set; }
-        public virtual ICollection<AspNetUserClaimsView> AspNetUserClaims { get; set; }
-        public virtual ICollection<AspNetUserLoginsView> AspNetUserLogins { get; set; }
-        public virtual ICollection<AspNetRolesView> AspNetRoles { get; set; }
+        public virtual ICollection<IAbsenceDomain> Absences { get; set; }
+        public virtual ICollection<IAbsenceDomain> AbsencesAssignee { get; set; }
+        public virtual ICollection<IAspNetUserClaimDomain> AspNetUserClaims { get; set; }
+        public virtual ICollection<IAspNetUserLoginDomain> AspNetUserLogins { get; set; }
+        public virtual ICollection<IAspNetRoleDomain> AspNetRoles { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace AbsenceTracker.Model.DomainModels
         public string CompensationId { get; set; }
         public System.DateTime Date { get; set; }
         public int SpentTime { get; set; }
-
         public virtual ICompensationDomain Compensation { get; set; }
     }
 }

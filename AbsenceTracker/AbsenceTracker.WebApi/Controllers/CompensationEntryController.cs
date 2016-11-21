@@ -21,13 +21,7 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             this.CompensationEntryService = service;
         }
-        [HttpGet]
-        [Route("getstring")]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
+     
         [HttpGet]
         [Route("getall")]
         public async Task<HttpResponseMessage> GetAll()
@@ -41,7 +35,6 @@ namespace AbsenceTracker.WebApi.Controllers
             catch(Exception e)
             {
                 throw e;
-                //return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't get data. Database error.");
             }
         }
 
@@ -58,9 +51,9 @@ namespace AbsenceTracker.WebApi.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
-            catch
+            catch(Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't get data. Database error.");
+                throw e;
             }
         }
 
@@ -79,9 +72,9 @@ namespace AbsenceTracker.WebApi.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
-            catch
+            catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't add data. Database error.");
+                throw e;
             }
 
         }
@@ -99,11 +92,10 @@ namespace AbsenceTracker.WebApi.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
-            catch
+            catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't delete data. Database error.");
+                throw e;
             }
-
         }
 
         [HttpPut]
@@ -126,11 +118,10 @@ namespace AbsenceTracker.WebApi.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
             }
-            catch
+            catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't update data. Database error.");
+                throw e;
             }
-
         }
     }
 }

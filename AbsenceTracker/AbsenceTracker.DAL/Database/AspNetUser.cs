@@ -18,7 +18,7 @@ namespace AbsenceTracker.DAL.Database
         public AspNetUser()
         {
             this.Absences = new HashSet<Absence>();
-            this.Absences1 = new HashSet<Absence>();
+            this.AbsencesAssignee = new HashSet<Absence>();
             this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
             this.AspNetRoles = new HashSet<AspNetRole>();
@@ -40,7 +40,7 @@ namespace AbsenceTracker.DAL.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Absence> Absences { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Absence> Absences1 { get; set; }
+        public virtual ICollection<Absence> AbsencesAssignee { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

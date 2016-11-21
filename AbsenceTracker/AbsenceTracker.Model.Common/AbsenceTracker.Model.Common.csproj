@@ -41,10 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDomainModels\IAbsenceDomain.cs" />
-    <Compile Include="IDomainModels\IAspNetRolesDomain.cs" />
-    <Compile Include="IDomainModels\IAspNetUserClaimsDomain.cs" />
-    <Compile Include="IDomainModels\IAspNetUsersDomain.cs" />
-    <Compile Include="IDomainModels\IAspNetUserLoginsDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetRoleDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetUserClaimDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetUserDomain.cs" />
+    <Compile Include="IDomainModels\IAspNetUserLoginDomain.cs" />
     <Compile Include="IDomainModels\ICompensationDomain.cs" />
     <Compile Include="IDomainModels\ICompensationEntryDomain.cs" />
     <Compile Include="IDomainModels\ISicknessDomain.cs" />

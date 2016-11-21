@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.Model.Common.IDomainModels
 {
-    public interface IAspNetUserClaimsDomain
+    public interface IAspNetUserLoginDomain
     {
-        int Id { get; set; }
+        string LoginProvider { get; set; }
+        string ProviderKey { get; set; }
         string UserId { get; set; }
-        string ClaimType { get; set; }
-        string ClaimValue { get; set; }
-        IAspNetUsersDomain AspNetUsers { get; set; }
+
+        IAspNetUserDomain AspNetUser { get; set; }
+
     }
 }

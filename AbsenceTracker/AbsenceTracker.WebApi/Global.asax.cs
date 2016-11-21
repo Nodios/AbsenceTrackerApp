@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
+using AbsenceTracker.WebApi.AutoMapperConfig;
 
 namespace AbsenceTracker.WebApi
 {
@@ -14,18 +15,16 @@ namespace AbsenceTracker.WebApi
     {
         protected void Application_Start()
         {
-            Mapper.Initialize(cfg =>
-            cfg.AddProfiles(new[] {
-                typeof(AbsenceTracker.DependencyResolver.MappingConfig.MappingProfile),
-                typeof(AbsenceTracker.WebApi.AutoMapperConfig.MappingProfile)
-                })
-            );
+            MapperInit.Init();
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            GlobalConfiguration.Configuration.Formatters.Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
         }
     }
 }
