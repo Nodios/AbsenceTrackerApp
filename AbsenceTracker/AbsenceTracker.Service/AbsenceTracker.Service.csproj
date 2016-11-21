@@ -45,9 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbsenceService.cs" />
+<<<<<<< HEAD
     <Compile Include="AspNetUserClaimService.cs" />
     <Compile Include="AspNetUserRoleService.cs" />
     <Compile Include="AspNetUserService.cs" />
+=======
+    <Compile Include="AspNetUserLoginService.cs" />
+>>>>>>> origin/devJBaketaric
     <Compile Include="CompensationEntryService.cs" />
     <Compile Include="CompensationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

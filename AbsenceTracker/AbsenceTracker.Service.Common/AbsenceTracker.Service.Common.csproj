@@ -41,9 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAbsenceService.cs" />
+
     <Compile Include="IAspNetUserClaimService.cs" />
     <Compile Include="IAspNetUserRoleService.cs" />
     <Compile Include="IAspNetUserService.cs" />
+  <Compile Include="IAspNetUserLoginService.cs" />
+
     <Compile Include="ICompensationEntryService.cs" />
     <Compile Include="ICompensationService.cs" />
     <Compile Include="ISicknessService.cs" />

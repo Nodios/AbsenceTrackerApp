@@ -22,12 +22,16 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
 
             Bind<IGenericRepository>().To<GenericRepository>();
 
-            Bind<IUserRepository>().To<UserRepository>();
             Bind<IAbsenceRepository>().To<AbsenceRepository>();
             Bind<IVacationRepository>().To<VacationRepository>();
             Bind<ISicknessRepository>().To<SicknessRepository>();
             Bind<ICompensationRepository>().To<CompensationRepository>();
             Bind<ICompensationEntryRepository>().To<CompensationEntryRepository>();
+
+            Bind<IAspNetUserRepository>().To<AspNetUserRepository>();
+            Bind<IAspNetRoleRepository>().To<AspNetRoleRepository>();
+            Bind<IAspNetUserClaimRepository>().To<AspNetUserClaimRepository>();
+            Bind<IAspNetUserLoginRepository>().To<AspNetUserLoginRepository>();
 
         }
     }
