@@ -258,6 +258,23 @@
     <Compile Include="ViewModels\VacationView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\js\angular\angular-route.js" />
+    <Content Include="app\js\angular\angular-ui-router.js" />
+    <Content Include="app\js\angular\angular.js" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\dirPagination.js" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\dirPagination.tpl.html" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\index.js" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\package.js" />
+    <Content Include="app\js\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="app\js\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="app\js\bootstrap\css\bootstrap.css" />
+    <Content Include="app\js\bootstrap\css\bootstrap.min.css" />
+    <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\js\bootstrap\js\bootstrap.js" />
+    <Content Include="app\js\bootstrap\js\bootstrap.min.js" />
+    <Content Include="app\js\bootstrap\js\npm.js" />
+    <Content Include="app\js\jquery-1.10.2.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -269,6 +286,19 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="app\js\angularUtils-pagination-0.11.0\.gitattributes" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\.gitignore" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\bower.json" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\package.json" />
+    <Content Include="app\js\angularUtils-pagination-0.11.0\README.md" />
+    <Content Include="app\js\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="app\js\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="app\js\bootstrap\css\bootstrap.css.map" />
+    <Content Include="app\js\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -319,6 +349,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="app\controllers\" />
+    <Folder Include="app\directives\" />
+    <Folder Include="app\services\" />
+    <Folder Include="app\views\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
