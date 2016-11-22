@@ -5,7 +5,9 @@ var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 
 AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     //Default route
+    //$urlRouterProvider.otherwise('/login');
 
     //Define states
+
 
 });

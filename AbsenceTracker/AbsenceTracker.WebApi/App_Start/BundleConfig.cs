@@ -30,14 +30,17 @@ namespace AbsenceTracker.WebApi
             //Custom bundles
             bundles.Add(new ScriptBundle("~/app/js").Include(
                 "~/app/js/angular/angular.js",
-                "~/app/js/angular/angular-ui-route.js",
+                "~/app/js/md5.js",
+                "~/app/js/angular/angular-ui-router.js",
                 "~/app/js/angularUtils-pagination-0.11.0/dirPagination.js"
                 ));
 
             //Add controllers
             //example: "~/app/controllers/[directory_name]/*Controller.js"
             bundles.Add(new ScriptBundle("~/app").Include(
-                "~/app/app.js"
+                "~/app/app.js",
+                "~/app/services/*Service.js",
+                "~/app/controllers/user/*Controller.js"
                 ));
 
         }

@@ -94,5 +94,19 @@ namespace AbsenceTracker.Service
                 throw e;
             }
         }
+
+        //Find AspNetUser By Email
+        public async Task<IAspNetUserDomain> FindByEmail(string email)
+        {
+            try
+            {
+                var users = await AspNetUserRepository.GetAll();
+                return users.Where(x => x.Email == email).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
     }
 }

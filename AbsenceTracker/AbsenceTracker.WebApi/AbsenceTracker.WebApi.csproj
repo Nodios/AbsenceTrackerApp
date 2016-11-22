@@ -259,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\user\statsController.js" />
     <Content Include="app\js\angular\angular-route.js" />
     <Content Include="app\js\angular\angular-ui-router.js" />
     <Content Include="app\js\angular\angular.js" />
@@ -275,7 +276,9 @@
     <Content Include="app\js\bootstrap\js\bootstrap.min.js" />
     <Content Include="app\js\bootstrap\js\npm.js" />
     <Content Include="app\js\jquery-1.10.2.js" />
-    <Content Include="app\views\index.html" />
+    <Content Include="app\js\md5.js" />
+    <Content Include="app\services\userService.js" />
+    <Content Include="app\views\user\stats.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -325,34 +328,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\controllers\" />
+    <Folder Include="app\controllers\admin\" />
     <Folder Include="app\directives\" />
-    <Folder Include="app\services\" />
+    <Folder Include="app\views\admin\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +348,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AbsenceTracker.Common\AbsenceTracker.Common.csproj">
+      <Project>{482fb671-d8f3-45b7-bd99-03a999a24d4c}</Project>
+      <Name>AbsenceTracker.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AbsenceTracker.DependencyResolver\AbsenceTracker.DependencyResolver.csproj">
       <Project>{aee2ef0b-e663-44ac-b83c-dbb148700cad}</Project>
       <Name>AbsenceTracker.DependencyResolver</Name>

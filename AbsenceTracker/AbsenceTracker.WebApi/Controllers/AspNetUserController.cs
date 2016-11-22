@@ -9,6 +9,8 @@ using AutoMapper;
 using AbsenceTracker.WebApi.ViewModels;
 using System.Threading.Tasks;
 using AbsenceTracker.Model.DomainModels;
+using Microsoft.AspNet.Identity;
+using AbsenceTracker.LoginAuthentication.Models;
 
 namespace AbsenceTracker.WebApi.Controllers
 {
@@ -150,5 +152,6 @@ namespace AbsenceTracker.WebApi.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
+
     }
 }
