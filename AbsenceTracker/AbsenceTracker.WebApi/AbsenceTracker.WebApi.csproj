@@ -258,7 +258,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
-    <Content Include="app\controllers\user\statsController.js" />
+    <Content Include="app\controllers\admin\adminEntriesController.js" />
+    <Content Include="app\controllers\admin\adminReportingController.js" />
+    <Content Include="app\controllers\admin\adminSignOutController.js" />
+    <Content Include="app\controllers\admin\adminStatsController.js" />
+    <Content Include="app\controllers\admin\adminTemplateController.js" />
+    <Content Include="app\controllers\user\userentriescontroller.js" />
+    <Content Include="app\controllers\user\userSignOutController.js" />
+    <Content Include="app\controllers\user\userStatsController.js" />
+    <Content Include="app\controllers\user\userTemplateController.js" />
     <Content Include="app\js\angular\angular-route.js" />
     <Content Include="app\js\angular\angular-ui-router.js" />
     <Content Include="app\js\angular\angular.js" />
@@ -277,7 +285,16 @@
     <Content Include="app\js\jquery-1.10.2.js" />
     <Content Include="app\js\md5.js" />
     <Content Include="app\services\userService.js" />
-    <Content Include="app\views\user\stats.html" />
+    <Content Include="app\views\admin\adminentries.html" />
+    <Content Include="app\views\admin\adminreporting.html" />
+    <Content Include="app\views\admin\adminsignout.html" />
+    <Content Include="app\views\admin\adminstats.html" />
+    <Content Include="app\views\admin\admintemplate.html" />
+    <Content Include="app\views\login\login.html" />
+    <Content Include="app\views\user\userentries.html" />
+    <Content Include="app\views\user\usersignout.html" />
+    <Content Include="app\views\user\userstats.html" />
+    <Content Include="app\views\user\usertemplate.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -333,9 +350,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\controllers\admin\" />
     <Folder Include="app\directives\" />
-    <Folder Include="app\views\admin\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
