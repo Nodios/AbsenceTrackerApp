@@ -30,6 +30,11 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
+                //test
+                AbsenceTracker.LoginAuthentication.test test2 = new AbsenceTracker.LoginAuthentication.test();
+                test2.SignIn("jbaketaric", "Kl3g57zvz");
+                //test
+
                 var response = Mapper.Map<IEnumerable<AspNetUserView>>(await AspNetUserService.ReadAll());
 
                 return Request.CreateResponse(HttpStatusCode.OK, response);
