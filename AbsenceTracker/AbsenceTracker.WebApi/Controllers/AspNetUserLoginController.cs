@@ -9,6 +9,9 @@ using AutoMapper;
 using System.Threading.Tasks;
 using AbsenceTracker.WebApi.ViewModels;
 using AbsenceTracker.Model.DomainModels;
+using AbsenceTracker.Common;
+using AbsenceTracker.LoginAuthentication;
+using AbsenceTracker.Model.Common.IDomainModels;
 
 namespace AbsenceTracker.WebApi.Controllers
 {
@@ -16,10 +19,13 @@ namespace AbsenceTracker.WebApi.Controllers
     public class AspNetUserLoginController : ApiController
     {
         protected IAspNetUserLoginService AspNetUserLoginService;
+        //For checking if user from AD is in AbsenceTracker database
+        protected IAspNetUserService AspNetUserService;
 
-        public AspNetUserLoginController(IAspNetUserLoginService aspNetUserLogin)
+        public AspNetUserLoginController(IAspNetUserLoginService aspNetUserLogin, IAspNetUserService aspNetUserService)
         {
             this.AspNetUserLoginService = aspNetUserLogin;
+            this.AspNetUserService = aspNetUserService;
         }
 
         [HttpGet]
@@ -76,6 +82,55 @@ namespace AbsenceTracker.WebApi.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
 
-        } 
+        }
+
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<HttpResponseMessage> Login(UserCredentials credentials)
+        {
+            try
+            {
+                if (credentials == null || credentials.UserName == null || credentials.Password == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid input");
+
+                var user = ValidateUser.Validate(credentials);
+                //If isValid == null then user doesn't exist, else it returns user object of type UserPrincipal
+                if (user == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid credentials");
+                //If user is not in AbsenceTracked dataase add him
+                var response = await AspNetUserService.FindByUserName(credentials.UserName);
+
+                if (response == null)
+                {
+                    //mapp
+                    var userView = new AspNetUserView()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Email = user.EmailAddress,
+                        UserName = user.SamAccountName,
+                        EmailConfirmed = false,
+                        PhoneNumberConfirmed = false,
+                        TwoFactorEnabled = false,
+                        LockoutEnabled = false,
+                        AccessFailedCount = 0
+                    };
+
+                    var result = await AspNetUserService.Add(Mapper.Map<IAspNetUserDomain>(userView));
+
+                    if (result == 0)
+                        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Couldn't add user to database.");
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, user);
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+           
+        }
+
+
     }
 }

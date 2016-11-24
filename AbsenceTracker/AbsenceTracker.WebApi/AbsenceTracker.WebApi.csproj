@@ -95,6 +95,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -229,7 +230,6 @@
     <Compile Include="AutoMapperConfig\MapperInit.cs" />
     <Compile Include="AutoMapperConfig\MappingProfile.cs" />
     <Compile Include="Controllers\AbsenceController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetUserClaimController.cs" />
     <Compile Include="Controllers\AspNetUserController.cs" />
     <Compile Include="Controllers\AspNetUserLoginController.cs" />
@@ -237,7 +237,6 @@
     <Compile Include="Controllers\CompensationController.cs" />
     <Compile Include="Controllers\CompensationEntryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SicknessController.cs" />
     <Compile Include="Controllers\VacationController.cs" />
     <Compile Include="Global.asax.cs">

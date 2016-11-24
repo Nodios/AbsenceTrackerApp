@@ -9,7 +9,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AbsenceTracker.WebApi.Models;
-using AbsenceTracker.LoginAuthentication.Models;
 using AbsenceTracker.Model.DomainModels;
 
 namespace AbsenceTracker.WebApi.Controllers

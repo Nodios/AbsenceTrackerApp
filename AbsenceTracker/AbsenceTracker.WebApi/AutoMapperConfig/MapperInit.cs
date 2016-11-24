@@ -12,8 +12,8 @@ namespace AbsenceTracker.WebApi.AutoMapperConfig
         {
             Mapper.Initialize(cfg =>
            cfg.AddProfiles(new[] {
-                typeof(AbsenceTracker.DependencyResolver.MappingConfig.MappingProfile),
-                typeof(AbsenceTracker.WebApi.AutoMapperConfig.MappingProfile)
+                typeof(DependencyResolver.MappingConfig.MappingProfile),
+                typeof(MappingProfile)
                })
            );
         }

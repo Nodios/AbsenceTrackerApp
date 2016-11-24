@@ -15,6 +15,6 @@ namespace AbsenceTracker.Service.Common
         Task<IAspNetUserDomain> Read(string id);
         Task<IEnumerable<IAspNetUserDomain>> ReadAll();
         Task<int> Update(IAspNetUserDomain entry);
-        Task<IAspNetUserDomain> FindByEmail(string email);
+        Task<IAspNetUserDomain> FindByUserName(string email);
     }
 }

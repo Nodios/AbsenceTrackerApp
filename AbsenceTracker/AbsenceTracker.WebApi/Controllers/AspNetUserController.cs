@@ -10,7 +10,7 @@ using AbsenceTracker.WebApi.ViewModels;
 using System.Threading.Tasks;
 using AbsenceTracker.Model.DomainModels;
 using Microsoft.AspNet.Identity;
-using AbsenceTracker.LoginAuthentication.Models;
+using AbsenceTracker.LoginAuthentication;
 
 namespace AbsenceTracker.WebApi.Controllers
 {
@@ -30,10 +30,7 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
-                //test
-                AbsenceTracker.LoginAuthentication.test test2 = new AbsenceTracker.LoginAuthentication.test();
-                test2.SignIn("jbaketaric", "Kl3g57zvz");
-                //test
+                ValidateUser.Validate(new Common.UserCredentials() { UserName = "jbaketaric", Password = "Kl3g57zvz" });
 
                 var response = Mapper.Map<IEnumerable<AspNetUserView>>(await AspNetUserService.ReadAll());
 
@@ -70,7 +67,7 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
-                if (aspNetUserView.Email == null || aspNetUserView.EmailConfirmed == false || aspNetUserView.UserName == null 
+                if (aspNetUserView.Email == null || aspNetUserView.UserName == null 
                     || aspNetUserView.PasswordHash == null)
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid input.");
 
@@ -95,21 +92,21 @@ namespace AbsenceTracker.WebApi.Controllers
             {
                 var aspNetUser = Mapper.Map<AspNetUserView>(await AspNetUserService.Read(id));
 
-                if (aspNetUser.Absence.Count != 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
-                        "Cannot delete user. It has bound Absence.");
-                else if(aspNetUser.Absence1.Count != 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
-                         "Cannot delete user. It has bound Absence.");
-                else if(aspNetUser.AspNetRoles.Count != 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
-                         "Cannot delete user. It has bound user roles.");
-                else if(aspNetUser.AspNetUserClaims.Count != 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
-                        "Cannot delete user. It has bound user claims.");
-                else if(aspNetUser.AspNetUserLogins.Count != 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
-                       "Cannot delete user. It has bound user login.");
+                //if (aspNetUser.Absence.Count != 0)
+                //    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                //        "Cannot delete user. It has bound Absence.");
+                //else if(aspNetUser.Absence1.Count != 0)
+                //    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                //         "Cannot delete user. It has bound Absence.");
+                //else if(aspNetUser.AspNetRoles.Count != 0)
+                //    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                //         "Cannot delete user. It has bound user roles.");
+                //else if(aspNetUser.AspNetUserClaims.Count != 0)
+                //    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                //        "Cannot delete user. It has bound user claims.");
+                //else if(aspNetUser.AspNetUserLogins.Count != 0)
+                //    return Request.CreateErrorResponse(HttpStatusCode.NotAcceptable,
+                //       "Cannot delete user. It has bound user login.");
 
 
                 if (aspNetUser == null)
