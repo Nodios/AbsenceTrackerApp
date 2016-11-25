@@ -8,19 +8,22 @@
 
         service.Login = Login;
         service.Logout = Logout;
+        service.Check = Check;
 
         return service;
 
         function Login(username, password, callback) {
-            $http.post('/api/authenticate', { username: username, password: password })
+            var obj = { UserName: username, Password: password };
+            console.log(obj);
+            $http.post('/api/aspnetuserlogin/login', obj)
                 .success(function (response) {
                     // login successful if there's a token in the response
-                    if (response.token) {
+                    if (response.Token) {
                         // store username and token in local storage to keep user logged in between page refreshes
-                        $localStorage.currentUser = { username: username, token: response.token };
+                        $localStorage.currentUser = { UserName: response.UserName, token: response.Token };
 
                         // add jwt token to auth header for all requests made by the $http service
-                        $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
+                        $http.defaults.headers.common.Authorization = 'Bearer ' + response.Token;
 
                         // execute callback with true to indicate successful login
                         callback(true);
@@ -36,5 +39,16 @@
             delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
         }
+
+        function Check() {
+            var dateTime = new Date();
+            var miliseconds = dateTime.getTime();
+
+            if ($localStorage.currentUser.token.ExpirationTime < miliseconds) {
+                Logout();
+            }
+        }
+
+
     }
 })();

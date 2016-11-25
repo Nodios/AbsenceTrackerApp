@@ -33,7 +33,8 @@ namespace AbsenceTracker.WebApi
                 "~/app/js/md5.js",
                 "~/app/js/angular/angular-ui-router.js",
                 "~/app/js/angularUtils-pagination-0.11.0/dirPagination.js",
-                "~/app/js/angular/angular-cookies.js"
+                "~/app/js/angular/ngStorage.js",
+                "~/app/js/angular/angular-messages.js"
                 ));
             
             //Add controllers

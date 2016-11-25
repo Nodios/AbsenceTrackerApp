@@ -1,25 +1,23 @@
 ﻿<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div>
-                <span><a ui-sref="usertemplate.stats">Stats</a></span>
-            </div>
-            <div>
-                <span><a ui-sref="usertemplate.entries">Entries</a></span>
-            </div>
-            <div>
-                <span><a ui-sref="usertemplate.signout">Sign out</a></span>
-            </div>  
+            <a class="navbar-brand">User dashboard</a>
         </div>
         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav" ng-controller="signOutController">
+                <li>
+                     <a ui-sref="usertemplate.stats">Stats</a>
+                </li>
+                <li>
+                    <a ui-sref="usertemplate.entries">Entries</a>
+                </li>
+                <li>
+                    <a ng-click="logout()">Sign out</a>
+                </li>
+            </ul>
         </div>
     </div>
-</div>
+</div> 
 <br />
 <br />
 <br />

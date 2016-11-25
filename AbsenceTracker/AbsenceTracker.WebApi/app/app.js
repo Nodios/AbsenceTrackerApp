@@ -1,5 +1,5 @@
 ﻿//Declare module
-var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 'angularUtils.directives.dirPagination','ngCookies']);
+var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 'angularUtils.directives.dirPagination', 'ngMessages', 'ngStorage']);
 
 //Configure routes
 AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -99,4 +99,25 @@ AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locat
                 }
             }
         })
+});
+
+AbsenceTrackerModule.run(function run($rootScope, $http, $location, $localStorage, AuthenticationService) {
+    // keep user logged in after page refresh
+    if ($localStorage.currentUser) {
+        $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
+
+
+        if ($http.defaults.headers.common.Authorization) {
+            $location.path('/user');
+        }
+    }
+
+    // redirect to login page if not logged in and trying to access a restricted page
+    $rootScope.$on('$locationChangeStart', function (event, next, current) {
+        var publicPages = ['/login'];
+        var restrictedPage = publicPages.indexOf($location.path()) === -1;
+        if (restrictedPage && !$localStorage.currentUser) {
+            $location.path('/login');
+        }
+    });
 });

@@ -1,8 +1,10 @@
 ﻿//Define stats controller
-angular.module('AbsenceTrackerModule').controller('userStatsController', ['$scope', '$http', '$stateParams', '$window', '$state', userStatsController]);
+angular.module('AbsenceTrackerModule').controller('userStatsController', ['$scope', '$http', '$stateParams', '$window', '$state', 'AuthenticationService', userStatsController]);
 
 //Define stats function
-function userStatsController($scope, $http, $stateParams, $window, $state) {
+function userStatsController($scope, $http, $stateParams, $window, $state, AuthenticationService) {
+
+    AuthenticationService.Check();
 
 
 
