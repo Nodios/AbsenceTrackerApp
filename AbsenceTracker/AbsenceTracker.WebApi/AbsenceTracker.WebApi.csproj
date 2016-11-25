@@ -263,10 +263,12 @@
     <Content Include="app\controllers\admin\adminSignOutController.js" />
     <Content Include="app\controllers\admin\adminStatsController.js" />
     <Content Include="app\controllers\admin\adminTemplateController.js" />
-    <Content Include="app\controllers\user\userentriescontroller.js" />
+    <Content Include="app\controllers\login\loginController.js" />
+    <Content Include="app\controllers\user\userEntriesController.js" />
     <Content Include="app\controllers\user\userSignOutController.js" />
     <Content Include="app\controllers\user\userStatsController.js" />
     <Content Include="app\controllers\user\userTemplateController.js" />
+    <Content Include="app\js\angular\angular-cookies.js" />
     <Content Include="app\js\angular\angular-route.js" />
     <Content Include="app\js\angular\angular-ui-router.js" />
     <Content Include="app\js\angular\angular.js" />
@@ -284,7 +286,7 @@
     <Content Include="app\js\bootstrap\js\npm.js" />
     <Content Include="app\js\jquery-1.10.2.js" />
     <Content Include="app\js\md5.js" />
-    <Content Include="app\services\userService.js" />
+    <Content Include="app\services\authenticationService.js" />
     <Content Include="app\views\admin\adminentries.html" />
     <Content Include="app\views\admin\adminreporting.html" />
     <Content Include="app\views\admin\adminsignout.html" />
@@ -301,6 +303,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -319,6 +326,8 @@
     <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="app\js\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

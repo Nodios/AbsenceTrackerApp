@@ -30,7 +30,9 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
-                ValidateUser.Validate(new Common.UserCredentials() { UserName = "jbaketaric", Password = "Kl3g57zvz" });
+                //****************************************************
+                //ovo sam ja zakomentirao kada sam radio s bazom doma
+                //ValidateUser.Validate(new Common.UserCredentials() { UserName = "jbaketaric", Password = "Kl3g57zvz" });
 
                 var response = Mapper.Map<IEnumerable<AspNetUserView>>(await AspNetUserService.ReadAll());
 

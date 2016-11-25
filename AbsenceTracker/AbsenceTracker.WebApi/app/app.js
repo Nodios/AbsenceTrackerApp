@@ -1,5 +1,5 @@
 ﻿//Declare module
-var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 'angularUtils.directives.dirPagination']);
+var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 'angularUtils.directives.dirPagination','ngCookies']);
 
 //Configure routes
 AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
