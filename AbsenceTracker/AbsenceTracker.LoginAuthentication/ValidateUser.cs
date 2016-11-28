@@ -22,9 +22,6 @@ namespace AbsenceTracker.LoginAuthentication
                     return user;
                 return null;
             }
-
         }//End of Validate methode
-
-
     }
 }

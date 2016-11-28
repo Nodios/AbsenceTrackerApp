@@ -20,7 +20,9 @@
                     // login successful if there's a token in the response
                     if (response.Token) {
                         // store username and token in local storage to keep user logged in between page refreshes
+                        //console.log(response.Token + response.UserName)
                         $localStorage.currentUser = { UserName: response.UserName, token: response.Token };
+                        //console.log($localStorage.currentUser);
 
                         // add jwt token to auth header for all requests made by the $http service
                         $http.defaults.headers.common.Authorization = 'Bearer ' + response.Token;
@@ -43,8 +45,10 @@
         function Check() {
             var dateTime = new Date();
             var miliseconds = dateTime.getTime();
+            //console.log($localStorage.currentUser);
 
             if ($localStorage.currentUser.token.ExpirationTime < miliseconds) {
+                //console.log(currentUser + " usao u if");
                 Logout();
             }
         }

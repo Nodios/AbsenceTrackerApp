@@ -34,9 +34,10 @@ namespace AbsenceTracker.WebApi
                 "~/app/js/angular/angular-ui-router.js",
                 "~/app/js/angularUtils-pagination-0.11.0/dirPagination.js",
                 "~/app/js/angular/ngStorage.js",
-                "~/app/js/angular/angular-messages.js"
-                ));
-            
+                "~/app/js/angular/angular-messages.js",
+                "~/app/js/angular/angular-route.js"
+                )); 
+
             //Add controllers
             //example: "~/app/controllers/[directory_name]/*Controller.js"
             bundles.Add(new ScriptBundle("~/app").Include(

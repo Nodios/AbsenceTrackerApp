@@ -1,15 +1,14 @@
 ﻿//Define login controller
-angular.module('AbsenceTrackerModule').controller('loginController', ['$scope', '$http', '$stateParams', '$window', '$state', '$location', 'AuthenticationService', loginController]);
+angular.module('AbsenceTrackerModule').controller('loginController', ['$scope', '$http', '$stateParams', '$window', '$state', '$location','$localStorage', 'AuthenticationService', loginController]);
 
 //Define login function
-function loginController($scope, $http, $stateParams, $window, $state, $location, AuthenticationService) {
+function loginController($scope, $http, $stateParams, $window, $state, $location,$localStorage, AuthenticationService) {
 
     //if ($http.defaults.headers.common.Authorization) {
     //    $location.path('/user');
     //}
 
-    $scope.login = function() {
-        console.log("usao u funkciju");
+    $scope.login = function () {
 
         var username = $scope.vm.UserName;
         var password = $scope.vm.Password;
@@ -17,7 +16,7 @@ function loginController($scope, $http, $stateParams, $window, $state, $location
         $scope.vm.loading = true;
         AuthenticationService.Login(username, password, function (result) {
             if (result === true) {
-                $location.path('/user')
+                $location.path('/user/userstats')
             } else {
                 $scope.vm.error = 'Username or password is incorrect';
                 $scope.vm.loading = false;
@@ -26,11 +25,6 @@ function loginController($scope, $http, $stateParams, $window, $state, $location
             }
         });
     };
-
-
-
-
-
 
     //var user;
 

@@ -1,5 +1,5 @@
 ﻿//Declare module
-var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 'angularUtils.directives.dirPagination', 'ngMessages', 'ngStorage']);
+var AbsenceTrackerModule = angular.module('AbsenceTrackerModule', ['ui.router', 'angularUtils.directives.dirPagination', 'ngMessages', 'ngStorage','ngRoute']);
 
 //Configure routes
 AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -20,19 +20,21 @@ AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locat
         })
         .state('usertemplate', {
             url: '/user',
-            controller: 'userTemplateController',
             views: {
                 "root": {
-                    templateUrl: 'app/views/user/usertemplate.html'
+                    templateUrl: 'app/views/user/usertemplate.html',
+                    controller: 'userTemplateController'
                 }
             }
+
         })
         .state('usertemplate.stats', {
             url: '/userstats',
-            controller: 'userStatsController',
+            
             views: {
                 "userview": {
-                    templateUrl: 'app/views/user/userstats.html'
+                    templateUrl: 'app/views/user/userstats.html',
+                    controller: 'userStatsController'
                 }
             }
         })

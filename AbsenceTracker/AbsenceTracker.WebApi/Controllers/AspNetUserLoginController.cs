@@ -98,7 +98,7 @@ namespace AbsenceTracker.WebApi.Controllers
                 //If isValid == null then user doesn't exist, else it returns user object of type UserPrincipal
                 if (user == null)
                     return Request.CreateErrorResponse(HttpStatusCode.NoContent, "Invalid credentials");
-                //If user is not in AbsenceTracked dataase add him
+                //If user is not in AbsenceTracked database add him
                 var response = await AspNetUserService.FindByUserName(credentials.UserName);
 
                 if (response == null)
@@ -123,8 +123,8 @@ namespace AbsenceTracker.WebApi.Controllers
                 }
 
                 //Create response
-                //Token duration is 1 minute
-                var tokenDuration = DateTime.UtcNow.AddMinutes(1);
+                //Token duration is 10 minute
+                var tokenDuration = DateTime.UtcNow.AddMinutes(10);
                 var token = new TokenFactory(tokenDuration).GenerateToken();
                 var loginResponse = new LoginResponse() { UserName = credentials.UserName, Token = token };
 

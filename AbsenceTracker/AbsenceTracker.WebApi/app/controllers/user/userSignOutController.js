@@ -1,9 +1,10 @@
 ﻿//Define sign out controller
-angular.module('AbsenceTrackerModule').controller('userSignOutController', ['$scope', '$http', '$stateParams', '$window', '$state', 'AuthenticationService', userSignOutController]);
+angular.module('AbsenceTrackerModule').controller('userSignOutController', ['$scope', '$http', '$stateParams', '$window', '$state','$localStorage', 'AuthenticationService', userSignOutController]);
 
 //Define sign out function
-function userSignOutController($scope, $http, $stateParams, $window, $state, AuthenticationService) {
+function userSignOutController($scope, $http, $stateParams, $window, $state, $localStorage,AuthenticationService) {
 
-    AuthenticationService.Check();
+    if ($localStorage.currentUser)
+        AuthenticationService.Check();
 
 };
