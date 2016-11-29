@@ -31,7 +31,7 @@ namespace AbsenceTracker.WebApi.Controllers
             try
             {
 
-                ValidateUser.Validate(new Common.UserCredentials() { UserName = "jbaketaric", Password = "Kl3g57zvz" });
+                //ValidateUser.Validate(new Common.UserCredentials() { UserName = "jbaketaric", Password = "Kl3g57zvz" });
 
                 var response = Mapper.Map<IEnumerable<AspNetUserView>>(await AspNetUserService.ReadAll());
 
@@ -51,6 +51,24 @@ namespace AbsenceTracker.WebApi.Controllers
             {
                 var response = Mapper.Map<AspNetUserView>(await AspNetUserService.Read(id));
 
+                if (response == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid input.");
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
+
+        [HttpGet]
+        [Route("getbyusername")]
+        public async Task<HttpResponseMessage> GetByUsername(string username)
+        {
+            try
+            {
+                var response = Mapper.Map<AspNetUserView>(await AspNetUserService.FindByUserName(username));
                 if (response == null)
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid input.");
 

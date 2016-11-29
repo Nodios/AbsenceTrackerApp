@@ -65,18 +65,18 @@ namespace AbsenceTracker.WebApi.Controllers
             int counter = 0;
             try
             {
-                if(absenceView.Sickness != null)
-                {
-                    counter++;
-                }
-                if(absenceView.Vacation != null)
-                {
-                    counter++;
-                }
-                if(absenceView.Compensation != null)
-                {
-                    counter++;
-                }
+                //if (absenceView.Sickness != null)
+                //{
+                //    counter++;
+                //}
+                //if (absenceView.Vacation != null)
+                //{
+                //    counter++;
+                //}
+                //if (absenceView.Compensation != null)
+                //{
+                //    counter++;
+                //}
                 if (absenceView.Type == null || (counter == 0 || counter > 1))
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request");
 
@@ -121,21 +121,21 @@ namespace AbsenceTracker.WebApi.Controllers
             {
                 var toBeUpdated = await AbsenceService.Read(absenceView.Id);
 
-                if (absenceView.Sickness != null)
-                {
-                    counter++;
-                    toBeUpdated.Sickness = Mapper.Map<ISicknessDomain>(absenceView.Sickness);
-                }
-                if (absenceView.Vacation != null)
-                {
-                    counter++;
-                    toBeUpdated.Vacation = Mapper.Map<IVacationDomain>(absenceView.Vacation);
-                }
-                if (absenceView.Compensation != null)
-                {
-                    counter++;
-                    toBeUpdated.Compensation = Mapper.Map<ICompensationDomain>(absenceView.Compensation);
-                }
+                //if (absenceView.Sickness != null)
+                //{
+                //    counter++;
+                //    toBeUpdated.Sickness = Mapper.Map<ISicknessDomain>(absenceView.Sickness);
+                //}
+                //if (absenceView.Vacation != null)
+                //{
+                //    counter++;
+                //    toBeUpdated.Vacation = Mapper.Map<IVacationDomain>(absenceView.Vacation);
+                //}
+                //if (absenceView.Compensation != null)
+                //{
+                //    counter++;
+                //    toBeUpdated.Compensation = Mapper.Map<ICompensationDomain>(absenceView.Compensation);
+                //}
 
                 if (toBeUpdated == null || (counter == 0 || counter > 1))
                     return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Entry not found");

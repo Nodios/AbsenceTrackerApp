@@ -14,9 +14,9 @@ namespace AbsenceTracker.Repository.GenericRepository
 {
     public class GenericRepository : IGenericRepository
     {
-        protected IAbsenceTrackerEntities Context { get; set; }
+        protected IAbsenceTracker3Entities Context { get; set; }
         protected IUnitOfWorkFactory UnitOfWorkFactory { get; set; }
-        public GenericRepository(IUnitOfWorkFactory unitOfWorkFactory, IAbsenceTrackerEntities context)
+        public GenericRepository(IUnitOfWorkFactory unitOfWorkFactory, IAbsenceTracker3Entities context)
         {
             this.Context = context;
             this.UnitOfWorkFactory = unitOfWorkFactory;

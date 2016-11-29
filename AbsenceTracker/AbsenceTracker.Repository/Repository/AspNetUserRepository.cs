@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AbsenceTracker.DAL.Database;
 using AbsenceTracker.Model.DomainModels;
+using System.Data.Entity;
 
 namespace AbsenceTracker.Repository.Repository
 {
@@ -93,6 +94,21 @@ namespace AbsenceTracker.Repository.Repository
             try
             {
                 return await GenericRepository.Update(Mapper.Map<AspNetUser>(entity));
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        //Get user by username
+        public async Task<IAspNetUserDomain> GetByUsername(string username)
+        {
+            try
+            {
+                var response = Mapper.Map<IAspNetUserDomain>(await GenericRepository
+                    .GetQueryable<AspNetUser>().Where(x => x.UserName == username)
+                    .Include(a => a.Absences).FirstOrDefaultAsync());
+                return response;
             }
             catch (Exception e)
             {

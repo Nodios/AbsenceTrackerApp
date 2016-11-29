@@ -7,4 +7,5 @@ function userStatsController($scope, $http, $stateParams, $window, $state, $loca
     if ($localStorage.currentUser)
         AuthenticationService.Check();
 
+
 };

@@ -5,7 +5,6 @@ using AbsenceTracker.WebApi.ViewModels;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -17,6 +16,20 @@ namespace AbsenceTracker.WebApi.Controllers
     public class CompensationController : ApiController
     {
         protected ICompensationService CompensationService;
+
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            //get
+            //{
+            //    return _userManager ?? System.Web.HttpContext.
+            //}
+            set
+            {
+
+            }
+        }
 
         public CompensationController(ICompensationService service)
         {
@@ -64,11 +77,12 @@ namespace AbsenceTracker.WebApi.Controllers
         {
             try
             {
-                if (compensationView.Absence == null || compensationView.AbsenceDate == null ||
-                    compensationView.EstimatedTime == 0 || compensationView.Id == null)
+                //potrebno provjeriti if kada se bude unosilo
+                if (compensationView.AbsenceDate == null || compensationView.EstimatedTime == 0 || 
+                    compensationView.Id == null || (compensationView.TotalSpentTime < 0 || compensationView.TotalSpentTime > 8))
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request.");
 
-                compensationView.Id = Guid.NewGuid().ToString();
+                //compensationView.Id = Guid.NewGuid().ToString();
 
                 var response = await CompensationService.Add(Mapper.Map<CompensationDomain>(compensationView));
 

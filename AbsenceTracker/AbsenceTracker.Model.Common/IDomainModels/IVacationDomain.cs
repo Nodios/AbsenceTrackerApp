@@ -13,6 +13,6 @@ namespace AbsenceTracker.Model.Common.IDomainModels
         System.DateTime EndDate { get; set; }
         int Time { get; set; }
         int TimeLeft { get; set; }
-        IAbsenceDomain Absence { get; set; }
+        string AbsenceId { get; set; }
     }
 }

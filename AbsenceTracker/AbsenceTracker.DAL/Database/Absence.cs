@@ -14,16 +14,25 @@ namespace AbsenceTracker.DAL.Database
     
     public partial class Absence
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Absence()
+        {
+            this.Compensations = new HashSet<Compensation>();
+            this.Sicknesses = new HashSet<Sickness>();
+            this.Vacations = new HashSet<Vacation>();
+        }
+    
         public string Id { get; set; }
         public string UserId { get; set; }
-        public string AssigneeId { get; set; }
+        public string AssignedBy { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual AspNetUser AspNetUserAssignee { get; set; }
-        public virtual Compensation Compensation { get; set; }
-        public virtual Sickness Sickness { get; set; }
-        public virtual Vacation Vacation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Compensation> Compensations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sickness> Sicknesses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vacation> Vacations { get; set; }
     }
 }

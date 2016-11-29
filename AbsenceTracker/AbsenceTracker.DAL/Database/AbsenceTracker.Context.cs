@@ -14,10 +14,10 @@ namespace AbsenceTracker.DAL.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
 
-    public partial class AbsenceTrackerEntities : DbContext, IAbsenceTrackerEntities
+    public partial class absencetracker3Entities : DbContext, IAbsenceTracker3Entities
     {
-        public AbsenceTrackerEntities()
-            : base("name=AbsenceTrackerEntities")
+        public absencetracker3Entities()
+            : base("name=absencetracker3Entities")
         {
         }
     
@@ -35,6 +35,7 @@ namespace AbsenceTracker.DAL.Database
         public virtual DbSet<CompensationEntry> CompensationEntries { get; set; }
         public virtual DbSet<Sickness> Sicknesses { get; set; }
         public virtual DbSet<Vacation> Vacations { get; set; }
+
         public string ConnectionString
         {
             get
@@ -69,7 +70,7 @@ namespace AbsenceTracker.DAL.Database
             this.Database.ExecuteSqlCommand(p);
         }
 
-        bool IAbsenceTrackerEntities.AutoDetectChangedEnabled
+        bool IAbsenceTracker3Entities.AutoDetectChangedEnabled
         {
             get
             {

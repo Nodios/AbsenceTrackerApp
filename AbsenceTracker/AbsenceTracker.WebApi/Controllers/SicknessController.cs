@@ -57,27 +57,27 @@ namespace AbsenceTracker.WebApi.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("add")]
-        public async Task<HttpResponseMessage> Add(SicknessView sicknessView)
-        {
-            try
-            {
-                if (sicknessView.Absence == null || sicknessView.StartDate == null || sicknessView.EndDate == null || sicknessView.Time == 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request");
+        //[HttpPost]
+        //[Route("add")]
+        //public async Task<HttpResponseMessage> Add(SicknessView sicknessView)
+        //{
+        //    try
+        //    {
+        //        if (sicknessView.Absence == null || sicknessView.StartDate == null || sicknessView.EndDate == null || sicknessView.Time == 0)
+        //            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request");
 
-                sicknessView.Id = Guid.NewGuid().ToString();
+        //        sicknessView.Id = Guid.NewGuid().ToString();
 
-                var response = await SicknessService.Add(Mapper.Map<SicknessDomain>(sicknessView));
+        //        var response = await SicknessService.Add(Mapper.Map<SicknessDomain>(sicknessView));
 
-                return Request.CreateResponse(HttpStatusCode.OK, response);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
-            }
+        //        return Request.CreateResponse(HttpStatusCode.OK, response);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+        //    }
 
-        }
+        //}
 
         [HttpDelete]
         [Route("delete")]

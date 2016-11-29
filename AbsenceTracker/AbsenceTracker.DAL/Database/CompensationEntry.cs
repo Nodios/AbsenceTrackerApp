@@ -18,7 +18,5 @@ namespace AbsenceTracker.DAL.Database
         public string CompensationId { get; set; }
         public System.DateTime Date { get; set; }
         public int SpentTime { get; set; }
-    
-        public virtual Compensation Compensation { get; set; }
     }
 }

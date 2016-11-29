@@ -10,14 +10,12 @@ namespace AbsenceTracker.Model.Common.IDomainModels
     {
         string Id { get; set; }
         string UserId { get; set; }
-        string AssigneeId { get; set; }
+        string AssignedBy { get; set; }
         string Type { get; set; }
         string Status { get; set; }
 
-        IAspNetUserDomain AspNetUser { get; set; }
-        IAspNetUserDomain AspNetUserAssignee { get; set; }
-        ICompensationDomain Compensation { get; set; }
-        ISicknessDomain Sickness { get; set; }
-        IVacationDomain Vacation { get; set; }
+        ICollection<ICompensationDomain> Compensations { get; set; }
+        ICollection<ISicknessDomain> Sicknesses { get; set; }
+        ICollection<IVacationDomain> Vacations { get; set; }
     }
 }

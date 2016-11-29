@@ -17,7 +17,7 @@ namespace AbsenceTracker.DependencyResolver.NinjectConfig
         {
             //Binding database context
             //Bind<IAbsenceTrackerEntities>().To<AbsenceTrackerEntities>();
-            Bind<IAbsenceTrackerEntities>().To<AbsenceTrackerEntities>();
+            Bind<IAbsenceTracker3Entities>().To<absencetracker3Entities>();
         }
     }
 }

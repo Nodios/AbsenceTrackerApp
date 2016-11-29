@@ -10,9 +10,9 @@ namespace AbsenceTracker.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        protected IAbsenceTrackerEntities Context;
+        protected IAbsenceTracker3Entities Context;
 
-        public UnitOfWork(IAbsenceTrackerEntities context)
+        public UnitOfWork(IAbsenceTracker3Entities context)
         {
             this.Context = context;
         }

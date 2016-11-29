@@ -73,7 +73,6 @@ namespace AbsenceTracker.Service
             try
             {
                 var response = await AspNetUserRepository.GetAll();
-
                 return response;
             }
             catch (Exception ex)
@@ -95,13 +94,13 @@ namespace AbsenceTracker.Service
             }
         }
 
-        //Find AspNetUser By Email
+        //Find AspNetUser By username
         public async Task<IAspNetUserDomain> FindByUserName(string userName)
         {
             try
             {
-                var users = await AspNetUserRepository.GetAll();
-                return users.Where(x => x.UserName == userName).FirstOrDefault();
+                var user = await AspNetUserRepository.GetByUsername(userName);
+                return user;
             }
             catch (Exception e)
             {

@@ -19,7 +19,6 @@ namespace AbsenceTracker.DAL.Database
         public System.DateTime EndDate { get; set; }
         public int Time { get; set; }
         public int TimeLeft { get; set; }
-    
-        public virtual Absence Absence { get; set; }
+        public string AbsenceId { get; set; }
     }
 }

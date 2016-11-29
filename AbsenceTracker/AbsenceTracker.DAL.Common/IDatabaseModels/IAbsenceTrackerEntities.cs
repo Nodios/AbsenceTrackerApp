@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AbsenceTracker.DAL.Common.IDatabaseModels
 {
-    public interface IAbsenceTrackerEntities : IDisposable
+    public interface IAbsenceTracker3Entities : IDisposable
     {
         DbSet<TEntity> Set<TEntity>() where TEntity : class;
         DbSet Set(Type entityType);

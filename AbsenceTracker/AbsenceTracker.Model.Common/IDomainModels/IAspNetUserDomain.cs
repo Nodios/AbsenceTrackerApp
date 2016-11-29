@@ -22,7 +22,6 @@ namespace AbsenceTracker.Model.Common.IDomainModels
         string UserName { get; set; }
 
         ICollection<IAbsenceDomain> Absences { get; set; }
-        ICollection<IAbsenceDomain> AbsencesAssignee { get; set; }
         ICollection<IAspNetUserClaimDomain> AspNetUserClaims { get; set; }
         ICollection<IAspNetUserLoginDomain> AspNetUserLogins { get; set; }
         ICollection<IAspNetUserRoleDomain> AspNetRoles { get; set; }

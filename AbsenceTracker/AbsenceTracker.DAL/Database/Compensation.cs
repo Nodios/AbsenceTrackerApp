@@ -24,8 +24,8 @@ namespace AbsenceTracker.DAL.Database
         public System.DateTime AbsenceDate { get; set; }
         public int EstimatedTime { get; set; }
         public int TotalSpentTime { get; set; }
+        public string AbsenceId { get; set; }
     
-        public virtual Absence Absence { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CompensationEntry> CompensationEntries { get; set; }
     }

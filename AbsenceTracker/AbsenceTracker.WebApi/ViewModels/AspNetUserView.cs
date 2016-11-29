@@ -20,8 +20,7 @@ namespace AbsenceTracker.WebApi.ViewModels
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
 
-        public virtual ICollection<AbsenceView> Absence { get; set; }
-        public virtual ICollection<AbsenceView> Absence1 { get; set; }
+        public virtual ICollection<AbsenceView> Absences { get; set; }
         public virtual ICollection<AspNetUserClaimView> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLoginView> AspNetUserLogins { get; set; }
         public virtual ICollection<AspNetUserRoleView> AspNetRoles { get; set; }

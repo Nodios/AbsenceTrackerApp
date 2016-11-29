@@ -11,6 +11,7 @@ namespace AbsenceTracker.Model.DomainModels
     {
         public string Id { get; set; }
         public string Name { get; set; }
+
         public virtual ICollection<IAspNetUserDomain> AspNetUsers { get; set; }
     }
 }

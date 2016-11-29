@@ -15,5 +15,6 @@ namespace AbsenceTracker.Repository.Common.IRepository
         Task<IAspNetUserDomain> Get(string id);
         Task<IEnumerable<IAspNetUserDomain>> GetAll();
         Task<int> Update(IAspNetUserDomain entity);
+        Task<IAspNetUserDomain> GetByUsername(string username);
     }
 }

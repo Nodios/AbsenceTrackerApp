@@ -58,27 +58,27 @@ namespace AbsenceTracker.WebApi.Controllers
             }
         }
 
-        [HttpPost]
-        [Route("add")]
-        public async Task<HttpResponseMessage> Add(VacationView vacationView)
-        {
-            try
-            {
-                if (vacationView.Absence == null || vacationView.StartDate == null || vacationView.EndDate == null || vacationView.Time == 0 || vacationView.TimeLeft == 0)
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request");
+        //[HttpPost]
+        //[Route("add")]
+        //public async Task<HttpResponseMessage> Add(VacationView vacationView)
+        //{
+        //    try
+        //    {
+        //        if (vacationView.Absence == null || vacationView.StartDate == null || vacationView.EndDate == null || vacationView.Time == 0 || vacationView.TimeLeft == 0)
+        //            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request");
 
-                vacationView.Id = Guid.NewGuid().ToString();
+        //        vacationView.Id = Guid.NewGuid().ToString();
 
-                var response = await VacationService.Add(Mapper.Map<VacationDomain>(vacationView));
+        //        var response = await VacationService.Add(Mapper.Map<VacationDomain>(vacationView));
 
-                return Request.CreateResponse(HttpStatusCode.OK, response);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
-            }
+        //        return Request.CreateResponse(HttpStatusCode.OK, response);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+        //    }
 
-        }
+        //}
 
         [HttpDelete]
         [Route("delete")]
@@ -99,42 +99,42 @@ namespace AbsenceTracker.WebApi.Controllers
             }
         }
 
-        [HttpPut]
-        [Route("update")]
-        public async Task<HttpResponseMessage> Update(VacationView vacationView)
-        {
-            try
-            {
-                var toBeUpdated = await VacationService.Read(vacationView.Id);
+        //[HttpPut]
+        //[Route("update")]
+        //public async Task<HttpResponseMessage> Update(VacationView vacationView)
+        //{
+        //    try
+        //    {
+        //        var toBeUpdated = await VacationService.Read(vacationView.Id);
 
-                if (toBeUpdated == null)
-                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Entry not found");
+        //        if (toBeUpdated == null)
+        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Entry not found");
 
-                if (vacationView.StartDate != null)
-                {
-                    toBeUpdated.StartDate = vacationView.StartDate;
-                }
-                if (vacationView.EndDate != null)
-                {
-                    toBeUpdated.EndDate = vacationView.EndDate;
-                }
-                if (vacationView.Time != 0)
-                {
-                    toBeUpdated.Time = vacationView.Time;
-                }
-                if(vacationView.TimeLeft != 0)
-                {
-                    toBeUpdated.TimeLeft = vacationView.TimeLeft;
-                }
+        //        if (vacationView.StartDate != null)
+        //        {
+        //            toBeUpdated.StartDate = vacationView.StartDate;
+        //        }
+        //        if (vacationView.EndDate != null)
+        //        {
+        //            toBeUpdated.EndDate = vacationView.EndDate;
+        //        }
+        //        if (vacationView.Time != 0)
+        //        {
+        //            toBeUpdated.Time = vacationView.Time;
+        //        }
+        //        if (vacationView.TimeLeft != 0)
+        //        {
+        //            toBeUpdated.TimeLeft = vacationView.TimeLeft;
+        //        }
 
-                var response = await VacationService.Update(Mapper.Map<VacationDomain>(toBeUpdated));
+        //        var response = await VacationService.Update(Mapper.Map<VacationDomain>(toBeUpdated));
 
-                return Request.CreateResponse(HttpStatusCode.OK, response);
-            }
-            catch (Exception e)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
-            }
-        }
+        //        return Request.CreateResponse(HttpStatusCode.OK, response);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+        //    }
+        //}
     }
 }

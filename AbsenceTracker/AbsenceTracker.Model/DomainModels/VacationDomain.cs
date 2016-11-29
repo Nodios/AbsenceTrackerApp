@@ -14,6 +14,6 @@ namespace AbsenceTracker.Model.DomainModels
         public System.DateTime EndDate { get; set; }
         public int Time { get; set; }
         public int TimeLeft { get; set; }
-        public virtual IAbsenceDomain Absence { get; set; }
+        public string AbsenceId { get; set; }
     }
 }
