@@ -1,4 +1,4 @@
-﻿using AbsenceTracker.DAL.Database;
+﻿using AbsenceTracker.DAL;
 using AbsenceTracker.Model.Common.IDomainModels;
 using AbsenceTracker.Model.DomainModels;
 using AbsenceTracker.Repository.Common.IGenericRepository;
@@ -35,7 +35,7 @@ namespace AbsenceTracker.Repository.Repository
         }
 
         //Delete Sickness by Id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace AbsenceTracker.Repository.Repository
         }
 
         //Get Sickness by Id
-        public async Task<ISicknessDomain> Get(string id)
+        public async Task<ISicknessDomain> Get(Guid id)
         {
             try
             {

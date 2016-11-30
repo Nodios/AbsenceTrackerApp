@@ -8,11 +8,11 @@ namespace AbsenceTracker.Model.Common.IDomainModels
 {
     public interface IVacationDomain
     {
-        string Id { get; set; }
+        Guid Id { get; set; }
         System.DateTime StartDate { get; set; }
         System.DateTime EndDate { get; set; }
         int Time { get; set; }
         int TimeLeft { get; set; }
-        string AbsenceId { get; set; }
+        Guid AbsenceId { get; set; }
     }
 }

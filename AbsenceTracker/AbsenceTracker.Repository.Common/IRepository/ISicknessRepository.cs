@@ -10,9 +10,9 @@ namespace AbsenceTracker.Repository.Common.IRepository
     public interface ISicknessRepository
     {
         Task<int> Add(ISicknessDomain entity);
-        Task<int> Delete(string id);
+        Task<int> Delete(Guid id);
         Task<int> Delete(ISicknessDomain entity);
-        Task<ISicknessDomain> Get(string id);
+        Task<ISicknessDomain> Get(Guid id);
         Task<IEnumerable<ISicknessDomain>> GetAll();
         Task<int> Update(ISicknessDomain entity);
 

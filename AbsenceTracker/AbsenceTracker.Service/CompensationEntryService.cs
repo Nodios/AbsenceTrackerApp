@@ -30,7 +30,7 @@ namespace AbsenceTracker.Service
             }
         }
         //Delete CompensationEntry by id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace AbsenceTracker.Service
             }
         }
         //Get CompensationEntry by Id
-        public async Task<ICompensationEntryDomain> Read(string id)
+        public async Task<ICompensationEntryDomain> Read(Guid id)
         {
             try
             {

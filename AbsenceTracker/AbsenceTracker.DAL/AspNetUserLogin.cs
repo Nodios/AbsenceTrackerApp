@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AbsenceTracker.DAL.Database
+namespace AbsenceTracker.DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CompensationEntry
+    public partial class AspNetUserLogin
     {
-        public string Id { get; set; }
-        public string CompensationId { get; set; }
-        public System.DateTime Date { get; set; }
-        public int SpentTime { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

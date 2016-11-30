@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AbsenceTracker.DAL.Database
+namespace AbsenceTracker.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -22,12 +22,13 @@ namespace AbsenceTracker.DAL.Database
             this.Vacations = new HashSet<Vacation>();
         }
     
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public string UserId { get; set; }
         public string AssignedBy { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compensation> Compensations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

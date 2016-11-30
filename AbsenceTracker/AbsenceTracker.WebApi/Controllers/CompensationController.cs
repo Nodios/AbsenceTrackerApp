@@ -54,7 +54,7 @@ namespace AbsenceTracker.WebApi.Controllers
 
         [HttpGet]
         [Route("get")]
-        public async Task<HttpResponseMessage> Get(string id)
+        public async Task<HttpResponseMessage> Get(Guid id)
         {
             try
             {
@@ -97,7 +97,7 @@ namespace AbsenceTracker.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public async Task<HttpResponseMessage> Delete(string id)
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
             {

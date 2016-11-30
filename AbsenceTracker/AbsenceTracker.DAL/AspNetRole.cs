@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AbsenceTracker.DAL.Database
+namespace AbsenceTracker.DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Compensation
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Compensation()
+        public AspNetRole()
         {
-            this.CompensationEntries = new HashSet<CompensationEntry>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
         public string Id { get; set; }
-        public System.DateTime AbsenceDate { get; set; }
-        public int EstimatedTime { get; set; }
-        public int TotalSpentTime { get; set; }
-        public string AbsenceId { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompensationEntry> CompensationEntries { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

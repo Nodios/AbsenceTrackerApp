@@ -7,17 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AbsenceTracker.DAL.Database
+namespace AbsenceTracker.DAL
 {
     using System;
     using System.Collections.Generic;
     
     public partial class Sickness
     {
-        public string Id { get; set; }
+        public System.Guid Id { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public int Time { get; set; }
-        public string AbsenceId { get; set; }
+        public System.Guid AbsenceId { get; set; }
+    
+        public virtual Absence Absence { get; set; }
     }
 }

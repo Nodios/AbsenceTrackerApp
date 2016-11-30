@@ -10,9 +10,9 @@ namespace AbsenceTracker.Repository.Common.IRepository
     public interface ICompensationEntryRepository
     {
         Task<int> Add(ICompensationEntryDomain entity);
-        Task<int> Delete(string id);
+        Task<int> Delete(Guid id);
         Task<int> Delete(ICompensationEntryDomain entity);
-        Task<ICompensationEntryDomain> Get(string id);
+        Task<ICompensationEntryDomain> Get(Guid id);
         Task<IEnumerable<ICompensationEntryDomain>> GetAll();
         Task<int> Update(ICompensationEntryDomain entity);
     }

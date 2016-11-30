@@ -1,4 +1,4 @@
-﻿using AbsenceTracker.DAL.Database;
+﻿using AbsenceTracker.DAL;
 using AbsenceTracker.Model.Common.IDomainModels;
 using AbsenceTracker.Model.DomainModels;
 using AutoMapper;

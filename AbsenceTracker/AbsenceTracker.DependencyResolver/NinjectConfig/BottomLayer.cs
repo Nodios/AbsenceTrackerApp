@@ -1,5 +1,5 @@
 ﻿using AbsenceTracker.DAL.Common.IDatabaseModels;
-using AbsenceTracker.DAL.Database;
+using AbsenceTracker.DAL;
 using AbsenceTracker.Model.Common.IDomainModels;
 using AbsenceTracker.Model.DomainModels;
 using Ninject.Modules;

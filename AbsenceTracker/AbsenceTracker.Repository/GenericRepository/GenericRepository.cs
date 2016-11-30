@@ -37,6 +37,19 @@ namespace AbsenceTracker.Repository.GenericRepository
             }
         }
         //Delete by id
+        public async Task<int> Delete<T>(Guid id) where T : class
+        {
+            try
+            {
+                T entity = await Get<T>(id);
+                Context.Set<T>().Remove(entity);
+                return await Context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public async Task<int> Delete<T>(string id) where T : class
         {
             try
@@ -64,6 +77,18 @@ namespace AbsenceTracker.Repository.GenericRepository
             }
         }
         //Get by Id
+        public async Task<T> Get<T>(Guid id) where T : class
+        {
+            try
+            {
+                var response = await Context.Set<T>().FindAsync(id);
+                return response;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         public async Task<T> Get<T>(string id) where T : class
         {
             try

@@ -7,8 +7,8 @@ namespace AbsenceTracker.WebApi.ViewModels
 {
     public class CompensationEntryView
     {
-        public string Id { get; set; }
-        public string CompensationId { get; set; }
+        public Guid Id { get; set; }
+        public Guid CompensationId { get; set; }
         public System.DateTime Date { get; set; }
         public int SpentTime { get; set; }
 

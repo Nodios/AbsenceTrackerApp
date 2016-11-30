@@ -10,9 +10,9 @@ namespace AbsenceTracker.Service.Common
     public interface ICompensationEntryService
     {
         Task<int> Add(ICompensationEntryDomain entry);
-        Task<int> Delete(string id);
+        Task<int> Delete(Guid id);
         Task<int> Delete(ICompensationEntryDomain entry);
-        Task<ICompensationEntryDomain> Read(string id);
+        Task<ICompensationEntryDomain> Read(Guid id);
         Task<IEnumerable<ICompensationEntryDomain>> ReadAll();
         Task<int> Update(ICompensationEntryDomain entry);
     }

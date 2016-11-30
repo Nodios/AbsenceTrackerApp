@@ -7,10 +7,10 @@ namespace AbsenceTracker.WebApi.ViewModels
 {
     public class SicknessView
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public int Time { get; set; }
-        public string AbsenceId { get; set; }
+        public Guid AbsenceId { get; set; }
     }
 }

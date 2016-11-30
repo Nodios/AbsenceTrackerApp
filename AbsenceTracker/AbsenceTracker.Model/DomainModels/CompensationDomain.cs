@@ -9,11 +9,11 @@ namespace AbsenceTracker.Model.DomainModels
 {
     public class CompensationDomain : ICompensationDomain
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public System.DateTime AbsenceDate { get; set; }
         public int EstimatedTime { get; set; }
         public int TotalSpentTime { get; set; }
-        public string AbsenceId { get; set; }
+        public Guid AbsenceId { get; set; }
 
         public virtual ICollection<ICompensationEntryDomain> CompensationEntries { get; set; }
     }

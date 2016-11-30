@@ -9,7 +9,7 @@ namespace AbsenceTracker.Model.DomainModels
 {
     public class AbsenceDomain : IAbsenceDomain
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public string UserId { get; set; }
         public string AssignedBy { get; set; }
         public string Type { get; set; }

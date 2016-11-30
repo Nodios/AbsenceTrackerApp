@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using AbsenceTracker.Model.Common.IDomainModels;
-using AbsenceTracker.DAL.Database;
+using AbsenceTracker.DAL;
 using AbsenceTracker.Model.DomainModels;
 
 namespace AbsenceTracker.Repository.Repository
@@ -34,7 +34,7 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Delete Absence by Id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Get Absence by Id
-        public async Task<IAbsenceDomain> Get(string id)
+        public async Task<IAbsenceDomain> Get(Guid id)
         {
             try
             {
@@ -82,6 +82,46 @@ namespace AbsenceTracker.Repository.Repository
             {
                 var getData = Mapper.Map<IEnumerable<IAbsenceDomain>>(await GenericRepository.GetAll<Absence>());
                 return getData;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
+        //Get all Absences with type of sickness
+        public async Task<IEnumerable<IAbsenceDomain>> GetAllSickness()
+        {
+            try
+            {
+                var getData = Mapper.Map<IEnumerable<IAbsenceDomain>>(GenericRepository.GetQueryable<Absence>());
+                return getData.Where(x => x.Type == "Sickness");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //Get all Absences with type of Vacation
+        public async Task<IEnumerable<IAbsenceDomain>> GetAllVacation()
+        {
+            try
+            {
+                var getData = Mapper.Map<IEnumerable<IAbsenceDomain>>(GenericRepository.GetQueryable<Absence>());
+                return getData.Where(x => x.Type == "Vacation");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        //Get all Absences with type of Compensation
+        public async Task<IEnumerable<IAbsenceDomain>> GetAllCompensation()
+        {
+            try
+            {
+                var getData = Mapper.Map<IEnumerable<IAbsenceDomain>>(GenericRepository.GetQueryable<Absence>());
+                return getData.Where(x => x.Type == "Compensation");
             }
             catch (Exception ex)
             {

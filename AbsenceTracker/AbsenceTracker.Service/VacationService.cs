@@ -30,7 +30,7 @@ namespace AbsenceTracker.Service
             }
         }
         //Delete Vacation by id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace AbsenceTracker.Service
             }
         }
         //Get Vacation by Id
-        public async Task<IVacationDomain> Read(string id)
+        public async Task<IVacationDomain> Read(Guid id)
         {
             try
             {

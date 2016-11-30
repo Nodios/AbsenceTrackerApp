@@ -31,7 +31,7 @@ namespace AbsenceTracker.Service
         }
 
         //Delete Sickness by id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace AbsenceTracker.Service
         }
 
         //Get Sickness by Id
-        public async Task<ISicknessDomain> Read(string id)
+        public async Task<ISicknessDomain> Read(Guid id)
         {
             try
             {

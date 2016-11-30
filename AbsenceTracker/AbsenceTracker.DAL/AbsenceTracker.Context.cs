@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AbsenceTracker.DAL.Database
+namespace AbsenceTracker.DAL
 {
     using Common.IDatabaseModels;
     using System;
@@ -26,6 +26,7 @@ namespace AbsenceTracker.DAL.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Absence> Absences { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
@@ -81,6 +82,5 @@ namespace AbsenceTracker.DAL.Database
                 this.Configuration.AutoDetectChangesEnabled = value;
             }
         }
-
     }
 }

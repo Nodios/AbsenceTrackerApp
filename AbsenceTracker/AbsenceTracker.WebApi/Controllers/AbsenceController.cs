@@ -23,6 +23,7 @@ namespace AbsenceTracker.WebApi.Controllers
             this.AbsenceService = service;
         }
 
+        //get all absences
         [HttpGet]
         [Route("getall")]
         public async Task<HttpResponseMessage> GetAll()
@@ -38,10 +39,57 @@ namespace AbsenceTracker.WebApi.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
             }
         }
+        //get all absences with type of sickness
+        [HttpGet]
+        [Route("getallsickness")]
+        public async Task<HttpResponseMessage> GetAllSickness()
+        {
+            try
+            {
+                var response = Mapper.Map<IEnumerable<AbsenceView>>(await AbsenceService.ReadAllSickness());
 
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
+        //get all absences with type of Vacation
+        [HttpGet]
+        [Route("getallvacation")]
+        public async Task<HttpResponseMessage> GetAllVacation()
+        {
+            try
+            {
+                var response = Mapper.Map<IEnumerable<AbsenceView>>(await AbsenceService.ReadAllVacation());
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
+        //get all absences with type of Compensation
+        [HttpGet]
+        [Route("getallcompensation")]
+        public async Task<HttpResponseMessage> GetAllCompensation()
+        {
+            try
+            {
+                var response = Mapper.Map<IEnumerable<AbsenceView>>(await AbsenceService.ReadAllCompensation());
+
+                return Request.CreateResponse(HttpStatusCode.OK, response);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+        }
         [HttpGet]
         [Route("get")]
-        public async Task<HttpResponseMessage> Get(string id)
+        public async Task<HttpResponseMessage> Get(Guid id)
         {
             try
             {
@@ -80,7 +128,7 @@ namespace AbsenceTracker.WebApi.Controllers
                 if (absenceView.Type == null || (counter == 0 || counter > 1))
                     return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid request");
 
-                absenceView.Id = Guid.NewGuid().ToString();
+                absenceView.Id = Guid.NewGuid();
 
                 var response = await AbsenceService.Add(Mapper.Map<AbsenceDomain>(absenceView));
 
@@ -95,7 +143,7 @@ namespace AbsenceTracker.WebApi.Controllers
 
         [HttpDelete]
         [Route("delete")]
-        public async Task<HttpResponseMessage> Delete(string id)
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             try
             {

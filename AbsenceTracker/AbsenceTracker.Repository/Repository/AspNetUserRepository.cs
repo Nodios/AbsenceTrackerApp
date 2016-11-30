@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using AbsenceTracker.DAL.Database;
+using AbsenceTracker.DAL;
 using AbsenceTracker.Model.DomainModels;
 using System.Data.Entity;
 

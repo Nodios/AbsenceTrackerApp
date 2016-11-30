@@ -1,9 +1,11 @@
-﻿<div ng-controller="userEntriesController">
+﻿<div ng-controller="userEntriesController" ng-init="getAllSickness();getAllVacation();getAllCompensation()">
     <div class="container-fluid">
 
         <div class="col-md-offset-1">
             <div class="col-md-10">
                 <div>
+                    <h4>Sicknesses and Vacations</h4>
+                    <br />
                     <table class="table table-bordered table-hover">
                         <thead class="thead-inverse">
                             <tr>
@@ -24,11 +26,82 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody ng-repeat="item in sickness">
+                            <tr>
+                                <td>
+                                    {{item.Type}}
+                                </td>
+                                <td ng-repeat-start="details in item.Sicknesses">
+                                    {{details.StartDate}}
+                                </td>
+                                <td>
+                                    {{details.EndDate}}
+                                </td>
+                                <td ng-repeat-end>
+                                    {{details.Time}}
+                                </td>
+                                <td>
+                                    {{item.Status}}
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-repeat="item in vacation">
+                            <tr>
+                                <td>
+                                    {{item.Type}}
+                                </td>
+                                <td ng-repeat-start="details in item.Vacations">
+                                    {{details.StartDate}}
+                                </td>
+                                <td>
+                                    {{details.EndDate}}
+                                </td>
+                                <td ng-repeat-end>
+                                    {{details.Time}}
+                                </td>
+                                <td>
+                                    {{item.Status}}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
-                    <p>TODO:</p><input type="button" class="btn btn-default" value="Create new"/>
+
+                    <hr />
+
+                    <h4>Compensations</h4>
+
+                    <br />
+
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>
+                                    Absence Date
+                                </th>
+                                <th>
+                                    Estimated Time
+                                </th>
+                                <th>
+                                    Total Spent Time
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="item in compensation">
+                            <tr>
+                                <td ng-repeat-start="details in item.Compensations">
+                                    {{details.AbsenceDate}}
+                                </td>
+                                <td>
+                                    {{details.EstimatedTime}}
+                                </td>
+                                <td ng-repeat-end>
+                                    {{details.TotalSpentTime}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>TODO:</p><input type="button" class="btn btn-default" value="Create new" ng-click="getAllAbsences()"/>
                 </div>
             </div>
         </div>

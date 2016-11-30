@@ -1,4 +1,4 @@
-﻿using AbsenceTracker.DAL.Database;
+﻿using AbsenceTracker.DAL;
 using AbsenceTracker.Model.Common.IDomainModels;
 using AbsenceTracker.Repository.Common.IGenericRepository;
 using AbsenceTracker.Repository.Common.IRepository;
@@ -33,7 +33,7 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Delete CompensationEntry by Id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace AbsenceTracker.Repository.Repository
             }
         }
         //Get CompensationEntry by Id
-        public async Task<ICompensationEntryDomain> Get(string id)
+        public async Task<ICompensationEntryDomain> Get(Guid id)
         {
             try
             {

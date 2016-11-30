@@ -5,11 +5,21 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="absencetracker3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Absence">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="AssignedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
@@ -70,18 +80,18 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AbsenceDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EstimatedTime" Type="int" Nullable="false" />
           <Property Name="TotalSpentTime" Type="int" Nullable="false" />
-          <Property Name="AbsenceId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AbsenceId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="CompensationEntry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="CompensationId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompensationId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="SpentTime" Type="int" Nullable="false" />
         </EntityType>
@@ -89,22 +99,22 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Time" Type="int" Nullable="false" />
-          <Property Name="AbsenceId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AbsenceId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Vacation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="StartDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="EndDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="Time" Type="int" Nullable="false" />
           <Property Name="TimeLeft" Type="int" Nullable="false" />
-          <Property Name="AbsenceId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AbsenceId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <Association Name="FK_Absence_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -223,6 +233,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="absencetracker3ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Absence" EntityType="Self.Absence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -275,15 +286,26 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="absencetracker3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Absence">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AssignedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Absence_AspNetUsers" FromRole="Absence" ToRole="AspNetUsers" />
           <NavigationProperty Name="Compensations" Relationship="Self.FK_Compensation_Absence" FromRole="Absence" ToRole="Compensation" />
           <NavigationProperty Name="Sicknesses" Relationship="Self.FK_Sickness_Absence" FromRole="Absence" ToRole="Sickness" />
           <NavigationProperty Name="Vacations" Relationship="Self.FK_Vacation_Absence" FromRole="Absence" ToRole="Vacation" />
@@ -342,42 +364,46 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="AbsenceDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EstimatedTime" Type="Int32" Nullable="false" />
           <Property Name="TotalSpentTime" Type="Int32" Nullable="false" />
-          <Property Name="AbsenceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AbsenceId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Absence" Relationship="Self.FK_Compensation_Absence" FromRole="Compensation" ToRole="Absence" />
           <NavigationProperty Name="CompensationEntries" Relationship="Self.FK_CompensationEntry_Compensation" FromRole="Compensation" ToRole="CompensationEntry" />
         </EntityType>
         <EntityType Name="CompensationEntry">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CompensationId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CompensationId" Type="Guid" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="SpentTime" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Compensation" Relationship="Self.FK_CompensationEntry_Compensation" FromRole="CompensationEntry" ToRole="Compensation" />
         </EntityType>
         <EntityType Name="Sickness">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Time" Type="Int32" Nullable="false" />
-          <Property Name="AbsenceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AbsenceId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Absence" Relationship="Self.FK_Sickness_Absence" FromRole="Sickness" ToRole="Absence" />
         </EntityType>
         <EntityType Name="Vacation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="Time" Type="Int32" Nullable="false" />
           <Property Name="TimeLeft" Type="Int32" Nullable="false" />
-          <Property Name="AbsenceId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AbsenceId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Absence" Relationship="Self.FK_Vacation_Absence" FromRole="Vacation" ToRole="Absence" />
         </EntityType>
         <Association Name="FK_Absence_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
@@ -472,6 +498,7 @@
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
         <EntityContainer Name="absencetracker3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="Absences" EntityType="Self.Absence" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
@@ -520,6 +547,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="absencetracker3ModelStoreContainer" CdmEntityContainer="absencetracker3Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="absencetracker3Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Absences">
             <EntityTypeMapping TypeName="absencetracker3Model.Absence">
               <MappingFragment StoreEntitySet="Absence">

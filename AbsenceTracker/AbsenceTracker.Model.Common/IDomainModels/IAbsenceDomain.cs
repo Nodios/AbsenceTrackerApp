@@ -8,7 +8,7 @@ namespace AbsenceTracker.Model.Common.IDomainModels
 {
     public interface IAbsenceDomain
     {
-        string Id { get; set; }
+        Guid Id { get; set; }
         string UserId { get; set; }
         string AssignedBy { get; set; }
         string Type { get; set; }

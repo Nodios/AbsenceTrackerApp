@@ -30,7 +30,7 @@ namespace AbsenceTracker.Service
             }
         }
         //Delete Absence by id
-        public async Task<int> Delete(string id)
+        public async Task<int> Delete(Guid id)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace AbsenceTracker.Service
             }
         }
         //Get Absence by Id
-        public async Task<IAbsenceDomain> Read(string id)
+        public async Task<IAbsenceDomain> Read(Guid id)
         {
             try
             {
@@ -72,6 +72,51 @@ namespace AbsenceTracker.Service
             try
             {
                 var response = await AbsenceRepository.GetAll();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        //Get All Absences with type of sickness
+        public async Task<IEnumerable<IAbsenceDomain>> ReadAllSickness()
+        {
+            try
+            {
+                var response = await AbsenceRepository.GetAllSickness();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        //Get All Absences with type of Vacation
+        public async Task<IEnumerable<IAbsenceDomain>> ReadAllVacation()
+        {
+            try
+            {
+                var response = await AbsenceRepository.GetAllVacation();
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+        //Get All Absences with type of Compensation
+        public async Task<IEnumerable<IAbsenceDomain>> ReadAllCompensation()
+        {
+            try
+            {
+                var response = await AbsenceRepository.GetAllCompensation();
 
                 return response;
             }

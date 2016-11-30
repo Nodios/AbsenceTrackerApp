@@ -8,8 +8,8 @@ namespace AbsenceTracker.Model.Common.IDomainModels
 {
     public interface ICompensationEntryDomain
     {
-        string Id { get; set; }
-        string CompensationId { get; set; }
+        Guid Id { get; set; }
+        Guid CompensationId { get; set; }
         System.DateTime Date { get; set; }
         int SpentTime { get; set; }
 
