@@ -11,9 +11,9 @@ AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locat
     $stateProvider
         .state('login', {
             url: '/login',
-            controller: 'loginController',
             views: {
                 "root": {
+                    controller: 'loginController',
                     templateUrl: 'app/views/login/login.html'
                 }
             }
@@ -40,70 +40,107 @@ AbsenceTrackerModule.config(function ($stateProvider, $urlRouterProvider, $locat
         })
         .state('usertemplate.entries', {
             url: '/userentries',
-            controller: 'userEntriesController',
             views: {
                 "userview": {
+                    controller: 'userEntriesController',
                     templateUrl: 'app/views/user/userentries.html'
+                }
+            }
+        })
+        .state('usertemplate.addentry', {
+            url: '/useraddentry',
+            views: {
+                "userview": {
+                    controller: 'userEntriesController',
+                    templateUrl: 'app/views/user/useraddentry.html'
+                }
+            }
+        })
+        .state('usertemplate.addentry.vacation', {
+            url: '/vacation',
+            views: {
+                "useraddentry": {
+                    controller: 'userEntriesController',
+                    templateUrl: 'app/views/user/addvacation.html'
+                }
+            }
+        })
+        .state('usertemplate.addentry.compensation', {
+            url: '/compensation',
+            views: {
+                "useraddentry": {
+                    controller: 'userEntriesController',
+                    templateUrl: 'app/views/user/addcompensation.html'
+                }
+            }
+        })
+        .state('usertemplate.addentry.sickness', {
+            url: '/sickness',
+            views: {
+                "useraddentry": {
+                    controller: 'userEntriesController',
+                    templateUrl: 'app/views/user/addsickness.html'
                 }
             }
         })
         .state('usertemplate.signout', {
             url: '/usersignout',
-            controller: 'userSignOutController',
+      
             views: {
                 "userview": {
+                    controller: 'signOutController',
                     templateUrl: 'app/views/user/usersignout.html'
                 }
             }
         })
         .state('admintemplate', {
             url: '/admin',
-            controller: 'adminTemplateController',
             views: {
                 "root": {
+                    controller: 'adminTemplateController',
                     templateUrl: 'app/views/admin/admintemplate.html'
                 }
             }
         })
         .state('admintemplate.stats', {
             url: '/adminstats',
-            controller: 'adminStatsController',
             views: {
                 "adminview": {
+                    controller: 'adminStatsController',
                     templateUrl: 'app/views/admin/adminstats.html'
                 }
             }
         })
         .state('admintemplate.entries', {
             url: '/adminentries',
-            controller: 'adminEntriesController',
             views: {
                 "adminview": {
+                    controller: 'adminEntriesController',
                     templateUrl: 'app/views/admin/adminentries.html'
                 }
             }
         })
         .state('admintemplate.reporting', {
             url: '/adminreporting',
-            controller: 'adminReportingController',
             views: {
                 "adminview": {
+                    controller: 'adminReportingController',
                     templateUrl: 'app/views/admin/adminreporting.html'
                 }
             }
         })
         .state('admintemplate.signout', {
             url: '/adminsignout',
-            controller: 'adminSignOutController',
             views: {
                 "adminview": {
+                    controller: 'signOutController',
                     templateUrl: 'app/views/admin/adminsignout.html'
                 }
             }
         })
 });
 
-AbsenceTrackerModule.run(function run($rootScope, $http, $location, $localStorage, AuthenticationService) {
+AbsenceTrackerModule.run(function run($rootScope, $http, $location, $localStorage, $state, AuthenticationService) {
     // keep user logged in after page refresh
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;

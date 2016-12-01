@@ -8,7 +8,11 @@ function userEntriesController($scope, $http, $stateParams, $window, $state, $lo
     if ($localStorage.currentUser)
         AuthenticationService.Check();
 
+    $scope.entryData = {
+        
+    }
 
+    //get all absences
     $scope.getAllAbsences = function () {
         $http.get('api/absence/getall')
         .success(function (response) {
@@ -19,7 +23,7 @@ function userEntriesController($scope, $http, $stateParams, $window, $state, $lo
         })
     }
 
-    //getting all absences with type sickness
+    //get all absences with type sickness
     $scope.getAllSickness = function () {
         $http.get('api/absence/getallsickness')
         .success(function (response) {
@@ -27,7 +31,7 @@ function userEntriesController($scope, $http, $stateParams, $window, $state, $lo
         })
     }
 
-    //getting all absences with type vacation
+    //get all absences with type vacation
     $scope.getAllVacation = function () {
         $http.get('api/absence/getallvacation')
         .success(function (response) {
@@ -35,7 +39,7 @@ function userEntriesController($scope, $http, $stateParams, $window, $state, $lo
         })
     }
 
-    //getting all absences with type compensation
+    //get all absences with type compensation
     $scope.getAllCompensation = function () {
         $http.get('api/absence/getallcompensation')
         .success(function (response) {
@@ -43,6 +47,15 @@ function userEntriesController($scope, $http, $stateParams, $window, $state, $lo
         })
     }
 
+    //change state when user clicks on Add entry
+    $scope.changeState = function () {
+        $state.go('usertemplate.addentry', {});
+    }
+
+    //change state when user change option on dropdown
+    $scope.go = function (path) {
+        $state.go(path, {});
+    }
     $scope.ispis = function () {
         return $window.alert(getAllAbsences() + "da");
     }

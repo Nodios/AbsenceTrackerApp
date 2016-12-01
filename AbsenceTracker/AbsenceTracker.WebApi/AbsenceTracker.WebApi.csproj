@@ -297,6 +297,10 @@
     <Content Include="app\views\admin\adminstats.html" />
     <Content Include="app\views\admin\admintemplate.html" />
     <Content Include="app\views\login\login.html" />
+    <Content Include="app\views\user\addcompensation.html" />
+    <Content Include="app\views\user\addsickness.html" />
+    <Content Include="app\views\user\addvacation.html" />
+    <Content Include="app\views\user\useraddentry.html" />
     <Content Include="app\views\user\userentries.html" />
     <Content Include="app\views\user\userstats.html" />
     <Content Include="app\views\user\usertemplate.html" />

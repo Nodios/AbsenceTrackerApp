@@ -1,0 +1,27 @@
+﻿<div>
+    <div class="container-fluid">
+        <h4>Add entry</h4>
+        <br />
+        <form name="useraddentry" ng-controller="userEntriesController">
+            
+            <div class="form-inline">
+                <label for="maker">Type:</label>
+                    <select class="selectpicker dropdown" data-style="btn-primary" ng-model="route.selectedRoute" ng-change="go(route.selectedRoute)">
+                        <option value="usertemplate.addentry.vacation">Vacation</option>
+                        <option value="usertemplate.addentry.sickness">Sickness</option>
+                        <option value="usertemplate.addentry.compensation">Compensation</option>
+                    </select>
+            </div>
+
+            <br />
+
+            <div ui-view="useraddentry">
+
+            </div>
+
+            <br />
+
+            <button ng-disabled="form.$pristine|| form.$invalid" type="submit" class="btn btn-default" ng-click="addentry()">Save</button>
+        </form>
+    </div>
+</div>
