@@ -95,13 +95,23 @@
                                     {{details.EstimatedTime}}
                                 </td>
                                 <td ng-repeat-end>
-                                    {{details.TotalSpentTime}}
+                                    <div class="btn-group">
+                                        <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                            {{details.TotalSpentTime}}
+                                            <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu" style="width:auto">
+                                            <li ng-repeat-start="entries in details.CompensationEntries"></li>
+                                            <li>Date: <br/>{{entries.Date}}</li>
+                                            <li ng-repeat-end>Spent Time: <br />{{entries.SpentTime}}</li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
 
-                    <p>TODO:</p><input type="button" class="btn btn-default" value="Create new" ng-click="getAllAbsences()"/>
+                    <input type="button" class="btn btn-default" value="Create new absence" ng-click="getAllAbsences()"/>
                 </div>
             </div>
         </div>
